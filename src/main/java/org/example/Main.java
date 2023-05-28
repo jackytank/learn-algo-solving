@@ -1,16 +1,49 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(isAnagram("ac", "bb"));
+
+    }
+    // https://leetcode.com/problems/top-k-frequent-elements/
+    public static int[] topKFrequent(int[] nums, int k) {
+        return null;
+    }
+
+    // https://leetcode.com/problems/group-anagrams/
+    public List<List<String>> groupAnagrams(String[] strs) {
+        if (strs.length == 1) {
+            if (strs[0].isEmpty()) {
+                return Arrays.asList(Arrays.asList(""));
+            }
+            return Arrays.asList(Arrays.asList(strs[0]));
+        }
+        Map<String, ArrayList<String>> map = new HashMap();
+        List<List<String>> ans = new ArrayList<>();
+        for (int i = 0; i < strs.length; i++) {
+            char[] chars = strs[i].toCharArray();
+            Arrays.sort(chars);
+            String sortedStr = new String(chars);
+            if (map.containsKey(sortedStr) == true) {
+                map.get(sortedStr).add(strs[i]);
+            }
+            if (map.containsKey(sortedStr) == false) {
+                ArrayList<String> groupList = new ArrayList<>();
+                groupList.add(strs[i]);
+                map.put(sortedStr, groupList);
+            }
+        }
+        for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+            ans.add(entry.getValue());
+        }
+        return ans;
     }
 
     // https://leetcode.com/problems/valid-anagram/
     public static boolean isAnagram(String s, String t) {
-        if(s.length() != t.length()){
+        if (s.length() != t.length()) {
             return false;
         }
         int UNICODE_LENGTH = 512;
@@ -20,7 +53,7 @@ public class Main {
             res[t.charAt(i)]--;
         }
         for (int i = 0; i < UNICODE_LENGTH; i++) {
-            if(res[i] != 0){
+            if (res[i] != 0) {
                 return false;
             }
         }
