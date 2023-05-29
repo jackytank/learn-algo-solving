@@ -1,11 +1,42 @@
 package org.example;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.security.spec.RSAOtherPrimeInfo;
 import java.util.*;
 
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println(longestCommonPrefix(new String[]{"floweri", "flowi", "flight"}));
+    }
 
+    // https://leetcode.com/problems/longest-common-prefix/
+    public static String longestCommonPrefix(String[] strs) {
+        if (strs.length == 0 || strs == null) {
+            return "";
+        }
+        if (strs.length == 1) {
+            return strs[0];
+        }
+        String curStr = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            for (int j = 0; j < curStr.length(); j++) {
+                if (strs[i].length() == 0) {
+                    curStr = "";
+                    break;
+                }
+                if (curStr.charAt(j) != strs[i].charAt(j)) {
+                    curStr = curStr.substring(0, j);
+                    break;
+                }
+                if (j == strs[i].length() - 1) {
+                    curStr = curStr.substring(0, j + 1);
+                    break;
+                }
+            }
+        }
+        return curStr;
     }
 
     // https://leetcode.com/problems/contains-duplicate/
