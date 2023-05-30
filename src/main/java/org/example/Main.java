@@ -126,18 +126,14 @@ public class Main {
 
     // https://leetcode.com/problems/valid-parentheses/
     public static boolean isValid(String s) {
-        Stack stack = new Stack<Character>();
-        boolean res = false;
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             char cur = s.charAt(i);
             if (stack.size() >= 1) {
                 char last = (char) stack.lastElement();
                 if ((cur == last + 1) || (cur == last + 2)) {
-                    res = true;
                     stack.pop();
                     continue;
-                } else {
-                    res = false;
                 }
             }
             stack.push(cur);
@@ -197,11 +193,6 @@ public class Main {
         return res;
     }
 
-    // https://leetcode.com/problems/top-k-frequent-elements/
-    public static int[] topKFrequent(int[] nums, int k) {
-        return null;
-    }
-
     // https://leetcode.com/problems/group-anagrams/
     public List<List<String>> groupAnagrams(String[] strs) {
         if (strs.length == 1) {
@@ -210,7 +201,7 @@ public class Main {
             }
             return Arrays.asList(Arrays.asList(strs[0]));
         }
-        Map<String, ArrayList<String>> map = new HashMap();
+        Map<String, ArrayList<String>> map = new HashMap<>();
         List<List<String>> ans = new ArrayList<>();
         for (int i = 0; i < strs.length; i++) {
             char[] chars = strs[i].toCharArray();
@@ -252,7 +243,7 @@ public class Main {
 
     // https://leetcode.com/problems/two-sum/
     public static int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {
                 return new int[]{map.get(target - nums[i]), i};
