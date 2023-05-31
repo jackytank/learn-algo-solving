@@ -2,6 +2,57 @@ using System.Collections;
 
 namespace Learning
 {
+
+    class LearnType
+    {
+        public static void LearnStringType()
+        {
+            string a = "hello";
+            string b = "h";
+            b += "ello";
+            string stringLiterals = """
+                This is a line from your concious, please consult to your master
+                    to learn more about the syntax of this programming language called C#
+                        I love this shit because "C#" is my first /language/ even before learnng "Java"
+            """;
+            System.Console.WriteLine(a == b);
+            System.Console.WriteLine(object.ReferenceEquals(a, b));
+            User obj = new User();
+            System.Console.WriteLine(stringLiterals);
+        }
+    }
+    class TestMotorcycle : Motorcycle
+    {
+
+        public override double GetTopSpeed()
+        {
+
+            return new Random().NextDouble() * 100;
+        }
+
+        public override int Drive(int miles, int speed)
+        {
+            return base.Drive(1, 19) + 99;
+        }
+
+        public static int ManipulateInt(ref int num)
+        {
+            return new Random().Next(1, 10) * num;
+        }
+        public static int? CheckDriverMentalScore(double speed)
+        {
+            int? score = null;
+            return score;
+        }
+    }
+    abstract class Motorcycle
+    {
+        public void StartEngine() { }
+        protected void AddGas(int gallons) { }
+        public virtual int Drive(int miles, int speed) { return 1; }
+        public abstract double GetTopSpeed();
+    }
+
     public class AllElements : System.Collections.IEnumerable
     {
         Element[] _elements ={
@@ -14,6 +65,17 @@ namespace Learning
         {
             return new ElementEnumerator(_elements);
             // return _elements.GetEnumerator();
+        }
+
+        public static IEnumerator<int> EvenSequence(int first, int last)
+        {
+            for (int i = first; i <= last; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    yield return i;
+                }
+            }
         }
 
         private class ElementEnumerator : System.Collections.IEnumerator
@@ -105,6 +167,14 @@ namespace Learning
         public string FullName { get; }
 
         public void Print() => System.Console.WriteLine($"{FirstName} {LastName} {FullName}");
+    }
+
+    class DerivedUser : User
+    {
+        public DerivedUser()
+        {
+            LastName = "Derived User";
+        }
     }
     class Customer : BaseAudit
     {

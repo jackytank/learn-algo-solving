@@ -10,9 +10,16 @@ namespace CSAlgorithms
         static void Main(string[] args)
         {
             // LearnStringInterpolation();
-            LearnCollections();
+            // LearnCollections();
+            // LearnMethodFunction();
+            LearnType.LearnStringType();
         }
 
+        private static void LearnMethodFunction()
+        {
+            var testMotorcycle = new TestMotorcycle();
+            System.Console.WriteLine(testMotorcycle.Drive(1, 12));
+        }
         private static void LearnCollections()
         {
 
@@ -76,8 +83,9 @@ namespace CSAlgorithms
             var elementList = new AllElements();
             foreach (Element item in elementList)
             {
-                System.Console.WriteLine(item.Name + " ");
+                // System.Console.WriteLine(item.Name + " ");
             }
+            var derivedUser = new DerivedUser { LastName = "hoho" };
 
         }
 
