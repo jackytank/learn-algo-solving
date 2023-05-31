@@ -2,17 +2,51 @@
 using System.Collections.Generic;
 using Learning;
 
-namespace CSAlgorithms
+namespace Learning
 {
 
     class Program
     {
         static void Main(string[] args)
         {
+            // LeetCode.LeetCodeMain();
             // LearnStringInterpolation();
             // LearnCollections();
             // LearnMethodFunction();
-            LearnType.LearnStringType();
+            // LearnType.LearnStringType();
+
+            // LearnDataTypes();
+            Learn.TestComplexLINQStyles();
+        }
+
+        private static void LearnDataTypes()
+        {
+            // String verbatim
+            string filename1 = @"c:\documents\files\u0066.txt";
+            string filename2 = "c:\\documents\\files\\u0066.txt";
+            string filename3 = "\u0066";
+            string s1 = "He said, \"This is the last \u0063hance\x0021\"";
+            string s2 = @"He said, ""This is the last \u0063hance\x0021""";
+            // User C# reserved keywords as identifiers
+            int[] @foreach = { 2, 3, 4, 5, 2, 5, 23, 23, 23, 23, 23, 23, 23, 23, 23 };
+            string? @string = @foreach.ToString();
+            Learn.DelegateMethod delegateMethod = new Learn.DelegateMethod(Learn.ShowString);
+            // int result = delegateMethod("32");
+            // System.Console.WriteLine(result);
+            dynamic? dynamicVar = "Hello world!";
+            object? objectVar = "Hello world!";
+            dynamicVar = 233M;
+            objectVar = 233M;
+            // System.Console.WriteLine($"{dynamicVar.GetType()} {objectVar.GetType()}");
+            dynamicVar = null;
+            if (dynamicVar is not null)
+            {
+                // System.Console.WriteLine("dynamicVar is not null");
+            }
+            // Anonymous types using object initializer
+            var student = new { Id = "PS001", FullName = "Nguyen Van A", Age = 21L };
+            System.Console.WriteLine(student.ToString());
+
         }
 
         private static void LearnMethodFunction()
@@ -49,7 +83,7 @@ namespace CSAlgorithms
                 // System.Console.WriteLine($"{item.Key} => {item.Value}");
             }
 
-            List<Element> elements = Utils.BuildList();
+            List<Element> elements = Utils.BuildElementList();
             // LINQ query
             var subset1 = from theElement in elements
                           where theElement.AtomicNumber < 32
@@ -58,7 +92,7 @@ namespace CSAlgorithms
             var subset2 = from el in elements
                           where el.AtomicNumber > 100 & el.AtomicNumber < 200
                           orderby el.Name
-                          select el;
+                          select new { el.FullName, el.Name };
             foreach (var item in subset1)
             {
                 // System.Console.WriteLine($"{item.Name} : {item.AtomicNumber}");
@@ -110,99 +144,7 @@ namespace CSAlgorithms
             System.Console.WriteLine(PIString);
         }
 
-        // https://leetcode.com/problems/roman-to-integer/
-        static int RomanToInt(string s)
-        {
-            int num = 0, prev = 0, ans = 0;
-            for (int i = s.Length - 1; i >= 0; i--)
-            {
-                switch (s[i])
-                {
-                    case 'I': num = 1; break;
-                    case 'V': num = 5; break;
-                    case 'X': num = 10; break;
-                    case 'L': num = 50; break;
-                    case 'C': num = 100; break;
-                    case 'D': num = 500; break;
-                    case 'M': num = 1000; break;
-                }
-                if (num < prev)
-                {
-                    ans -= num;
-                }
-                else
-                {
-                    ans += num;
-                }
-                prev = num;
-            }
-            return ans;
-        }
 
-        // https://leetcode.com/problems/group-anagrams/
-        static IList<IList<string>> GroupAnagrams(string[] strs)
-        {
-            Dictionary<string, List<string>> map = new Dictionary<string, List<string>>();
-            IList<IList<string>> res = new List<IList<string>>();
-            for (int i = 0; i < strs.Length; i++)
-            {
-                char[] charArr = strs[i].ToCharArray();
-                Array.Sort(charArr);
-                string sortedStr = new string(charArr);
-                if (map.ContainsKey(sortedStr))
-                {
-                    map[sortedStr].Add(strs[i]);
-                }
-                if (!map.ContainsKey(sortedStr))
-                {
-                    List<string> newList = new List<string>() { strs[i] };
-                    map[sortedStr] = newList;
-                }
-            }
-            foreach (KeyValuePair<string, List<string>> item in map)
-            {
-                res.Add(item.Value);
-            }
-            return res;
-        }
-
-        // https://leetcode.com/problems/two-sum/
-        static bool IsAnargram(string s, string t)
-        {
-            if (s.Length != t.Length)
-            {
-                return false;
-            }
-            int UNICODE_LEN = 512;
-            int[] res = new int[UNICODE_LEN];
-            for (int i = 0; i < s.Length; i++)
-            {
-                res[s[i]]++;
-                res[t[i]]--;
-            }
-            for (int i = 0; i < UNICODE_LEN; i++)
-            {
-                if (res[i] != 0)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        // https://leetcode.com/problems/two-sum/
-        static int[]? twoSum(int[] nums, int target)
-        {
-            Dictionary<int, int> map = new Dictionary<int, int>();
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (map.ContainsKey(target - nums[i]))
-                {
-                    return new int[] { map[target - nums[i]], i };
-                }
-            }
-            return new int[0];
-        }
     }
 
 }

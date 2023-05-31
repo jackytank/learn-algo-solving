@@ -2,10 +2,11 @@ package org.example;
 
 import java.util.*;
 
-
 public class Main {
     public static void main(String[] args) {
-        Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n -> System.out.println(n));
+        // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
+        // System.out.println(n));
+        
     }
 
     // https://leetcode.com/problems/plus-one/
@@ -76,9 +77,11 @@ public class Main {
         for (int i = 0; i < nums.length; i++) {
             sumExpect += i + 1;
             sum += nums[i];
-            if (nums[i] == 0) existNum_0 = true;
+            if (nums[i] == 0)
+                existNum_0 = true;
         }
-        if (!existNum_0) return 0;
+        if (!existNum_0)
+            return 0;
         return sumExpect - sum;
     }
 
@@ -108,17 +111,20 @@ public class Main {
     // https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
     public int strStr(String haystack, String needle) {
         char firstCharNeedle = needle.charAt(0);
-        if (haystack.length() < needle.length()) return -1;
+        if (haystack.length() < needle.length())
+            return -1;
         for (int i = 0; i < haystack.length(); i++) {
             int count = 0;
-            if (i + needle.length() > haystack.length()) return -1;
+            if (i + needle.length() > haystack.length())
+                return -1;
             if (haystack.charAt(i) == firstCharNeedle) {
                 for (int j = 1; j < needle.length(); j++) {
                     if (haystack.charAt(i + j) == needle.charAt(j)) {
                         count++;
                     }
                 }
-                if (count == needle.length() - 1) return i;
+                if (count == needle.length() - 1)
+                    return i;
             }
         }
         return -1;
@@ -143,7 +149,8 @@ public class Main {
 
     // https://leetcode.com/problems/roman-to-integer/
     public int romanToInt(String s) {
-        if (s.length() < 1 || s.length() > 15) return 0;
+        if (s.length() < 1 || s.length() > 15)
+            return 0;
         int res = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == 'I') {
@@ -159,7 +166,8 @@ public class Main {
                 }
                 res += 1;
             }
-            if (s.charAt(i) == 'V') res += 5;
+            if (s.charAt(i) == 'V')
+                res += 5;
             if (s.charAt(i) == 'X') {
                 if (i + 1 < s.length() && s.charAt(i + 1) == 'L') {
                     res += 40;
@@ -173,7 +181,8 @@ public class Main {
                 }
                 res += 10;
             }
-            if (s.charAt(i) == 'L') res += 50;
+            if (s.charAt(i) == 'L')
+                res += 50;
             if (s.charAt(i) == 'C') {
                 if (i + 1 < s.length() && s.charAt(i + 1) == 'D') {
                     res += 400;
@@ -187,8 +196,10 @@ public class Main {
                 }
                 res += 100;
             }
-            if (s.charAt(i) == 'D') res += 500;
-            if (s.charAt(i) == 'M') res += 1000;
+            if (s.charAt(i) == 'D')
+                res += 500;
+            if (s.charAt(i) == 'M')
+                res += 1000;
         }
         return res;
     }
@@ -246,7 +257,7 @@ public class Main {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {
-                return new int[]{map.get(target - nums[i]), i};
+                return new int[] { map.get(target - nums[i]), i };
             }
             map.put(nums[i], i);
         }
