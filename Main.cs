@@ -9,14 +9,14 @@ namespace Learning
     {
         static void Main(string[] args)
         {
-            // LeetCode.LeetCodeMain();
+            LeetCode.LeetCodeMain();
             // LearnStringInterpolation();
             // LearnCollections();
             // LearnMethodFunction();
             // LearnType.LearnStringType();
 
             // LearnDataTypes();
-            Learn.TestComplexLINQStyles();
+            // Learn.TestComplexLINQStyles();
         }
 
         private static void LearnDataTypes()

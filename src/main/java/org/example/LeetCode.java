@@ -2,11 +2,11 @@ package org.example;
 
 import java.util.*;
 
-public class Main {
+public class LeetCode {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
         // System.out.println(n));
-        
+
     }
 
     // https://leetcode.com/problems/plus-one/

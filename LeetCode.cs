@@ -4,7 +4,48 @@ namespace Learning
     {
         public static void LeetCodeMain()
         {
-            System.Console.WriteLine("LeetCode");
+            LengthOfLastWord("   fly me   to   the moon  ");
+        }
+
+        // https://leetcode.com/problems/length-of-last-word/
+        public static int LengthOfLastWord(string s)
+        {
+            string[] arrStr = s.Split(" ");
+            for (int i = arrStr.Length - 1; i >= 0; i--)
+            {
+                if (!string.IsNullOrWhiteSpace(arrStr[i]))
+                {
+                    return arrStr[i].Length;
+                }
+            }
+            return 0;
+        }
+
+        // https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
+        public static int StrStr(string haystack, string needle)
+        {
+            return haystack.IndexOf(needle);
+        }
+
+        // https://leetcode.com/problems/valid-parentheses/
+        public static bool IsValid(string s)
+        {
+            Stack<char> stack = new Stack<char>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                char cur = s[i];
+                if (stack.Count >= 1)
+                {
+                    char last = (char)stack.Peek();
+                    if ((cur == last + 1) || (cur == last + 2))
+                    {
+                        stack.Pop();
+                        continue;
+                    }
+                }
+                stack.Push(cur);
+            }
+            return stack.Count == 0;
         }
 
         // https://leetcode.com/problems/roman-to-integer/
