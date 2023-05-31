@@ -2,9 +2,19 @@ using System.Collections;
 
 namespace Learning
 {
-    class DerivedLearnType : Learn
+    public struct Coords
     {
-
+        public const int CONST_VALUE = 2;
+        public readonly int READONLY_VALUE;
+        public readonly void GetShit() { }
+        public Coords(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+        public double X { get; }
+        public double Y { get; }
+        public readonly override string ToString() => $"{X} {Y}";
     }
 
     class Learn
@@ -61,20 +71,69 @@ namespace Learning
         public static void TestComplexLINQStyles()
         {
             var salesData = Utils.BuildSalesDataList();
-            var result1 = salesData
-                .Where(sales => sales.Quantity >= 10 && sales.Price >= 50)
-                .GroupBy(sales => sales.Region)
-                .Select(group => new
-                {
-                    Region = group.Key,
-                    TotalSales = group.Sum(sales => sales.Quantity * sales.Price),
-                    AveragePrice = group.Average(sales => sales.Price),
-                    MaxQuantity = group.Max(sales => sales.Quantity),
-                    MinPrice = group.Min(sales => sales.Price)
-                })
-                .OrderByDescending(group => group.TotalSales)
-                .ToList();
-            result1.ForEach(item => System.Console.WriteLine(item));
+            var medMethod = salesData
+                        .Where(sales => sales.Quantity >= 10 && sales.Price >= 50)
+                        .GroupBy(sales => sales.Region)
+                        .Select(group => new
+                        {
+                            Region = group.Key,
+                            TotalSales = group.Sum(sales => sales.Quantity * sales.Price),
+                            AveragePrice = Math.Round(group.Average(sales => sales.Price), 2),
+                            MaxQuantity = group.Max(sales => sales.Quantity),
+                            MinPrice = Math.Round(group.Min(sales => sales.Price), 2)
+                        })
+                        .OrderByDescending(group => group.TotalSales)
+                        .ToList();
+            // result1.ForEach(item => System.Console.WriteLine(item));
+            var medQuery = from sales in salesData
+                           where sales.Quantity >= 10 && sales.Price >= 50
+                           group sales by sales.Region into regionGroup
+                           orderby regionGroup.Sum(sales => sales.Quantity * sales.Price) descending
+                           select new
+                           {
+                               Region = regionGroup.Key,
+                               TotalSales = regionGroup.Sum(sales => sales.Quantity * sales.Price),
+                               AveragePrice = Math.Round(regionGroup.Average(sales => sales.Price), 2),
+                               MaxQuantity = regionGroup.Max(sales => sales.Quantity),
+                               MinPrice = Math.Round(regionGroup.Min(sales => sales.Price), 2)
+                           };
+            // foreach (var item in mediumQuery)
+            // {
+            //     System.Console.WriteLine(item);
+            // }
+            var hardMethod = salesData
+                            .GroupBy(sales => new { sales.Region, sales.Product })
+                            .Select(group => new
+                            {
+                                Region = group.Key.Region,
+                                Product = group.Key.Product,
+                                TotalSales = group.Sum(sales => sales.Quantity * sales.Price),
+                                AveragePrice = Math.Round(group.Average(sales => sales.Price), 2),
+                                MaxQuantity = group.Max(sales => sales.Quantity),
+                                MinPrice = Math.Round(group.Min(sales => sales.Price), 2),
+                                MaxPrice = Math.Round(group.Max(sales => sales.Price), 2)
+                            })
+                            .OrderByDescending(group => group.TotalSales)
+                            .GroupBy(group => group.Region)
+                            .SelectMany(regionGroup => regionGroup.
+                                OrderByDescending(group => group.TotalSales))
+                            .Select((group, index) => new
+                            {
+                                Rank = index + 1,
+                                Region = group.Region,
+                                Product = group.Product,
+                                TotalSales = group.TotalSales,
+                                AveragePrice = group.AveragePrice,
+                                MaxQuantity = group.MaxQuantity,
+                                MinPrice = group.MinPrice,
+                                MaxPrice = group.MaxPrice
+                            })
+                            .OrderBy(group => group.Region)
+                            .ThenBy(group => group.Rank)
+                            .ToList();
+            // hardMethod.ForEach(data => System.Console.WriteLine(data));
+
+            // Conclusions: I Prefer the method style to write LINQ
         }
     }
     class TestMotorcycle : Motorcycle

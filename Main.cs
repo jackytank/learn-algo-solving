@@ -46,7 +46,7 @@ namespace Learning
             // Anonymous types using object initializer
             var student = new { Id = "PS001", FullName = "Nguyen Van A", Age = 21L };
             System.Console.WriteLine(student.ToString());
-
+            Coords shit = new Coords() { READONLY_VALUE = 2 };
         }
 
         private static void LearnMethodFunction()
