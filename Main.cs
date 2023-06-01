@@ -17,7 +17,34 @@ namespace Learning
 
             // LearnDataTypes();
             // Learn.TestComplexLINQStyles();
+
+            var emp = new EmployeeStruct() { Name = "Test", Age = 21 };
+            System.Console.WriteLine($"{emp.Name} {emp.Age}");
+            ModifyUserInfo(out emp);
+            System.Console.WriteLine($"{emp.Name} {emp.Age}");
+
         }
+
+        public static void ModifyUserInfo(out EmployeeStruct user)
+        {
+            user = new EmployeeStruct();
+            user.Name = "Changed by out";
+        }
+        public static void UpdateUserVal(ref EmployeeStruct user)
+        {
+            user.Name = "Changed by ref";
+        }
+
+        public static void ReadUserInfo(in EmployeeStruct user)
+        {
+            // "in": pass a parameter by reference in read-only mode, you can read the value but you cannot modify it
+            var userInfo = user;
+            userInfo.Name = "Changed by in";
+        }
+
+
+
+
 
         private static void LearnDataTypes()
         {
@@ -45,7 +72,7 @@ namespace Learning
             }
             // Anonymous types using object initializer
             var student = new { Id = "PS001", FullName = "Nguyen Van A", Age = 21L };
-            System.Console.WriteLine(student.ToString());
+            // System.Console.WriteLine(student.ToString());
         }
 
         private static void LearnMethodFunction()
@@ -118,8 +145,6 @@ namespace Learning
             {
                 // System.Console.WriteLine(item.Name + " ");
             }
-            var derivedUser = new DerivedUser { LastName = "hoho" };
-
         }
 
         private static void LearnStringInterpolation()

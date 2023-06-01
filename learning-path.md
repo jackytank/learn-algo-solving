@@ -1,4 +1,4 @@
-# C# Learning Path (.NET 6+)
+# Embrace the .NET
 
 Start: May 29 2023
 
@@ -15,14 +15,16 @@ Below is a list of topics that cover basic to advanced concepts in C#. This lear
     - [x]  Primitive types (int. long, double, float, decimal. short, and other unsigned types)
     - [x]  Nullable types (using Nullable<T> or ? operator)
     - [x]  string type
-        - [x]  [Verbatim string literals](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/verbatim)
-        - [x]  String interpolation
+        - [x]  [Verbatim string literals](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/verbatim) (@””)
+        - [x]  String interpolation ($”{var}”)
     - [x]  object type
     - [x]  dynamic type (not type safe, not known until runtime, IntelliSence is not available)
     - [x]  var type (type safe, no issue at runtime, make code shorter, reduce effort to create new class, prefer when using LINQ)
     - [x]  anonymous type (by using object initializer, not allow null, derived directly from object)
-    - [ ]  struct type
-    - [ ]  ref type
+    - [x]  struct type (Not reference type, can’t be derived or become base class, only for hold data)
+    - [x]  “ref” keyword and reference types
+        - When a reference type (such as an object) is passed by value to a method in C#, a copy of the reference is created and passed to the method. Mean: original reference and the copy of the reference both point to the same object in memory
+        - using “ref” with primitive type the behavior is expected
 - [ ]  Operators: This topic covers the different types of operators in C#, such as arithmetic, logical, and comparison operators. You will also learn how to use operators to perform different operations in your programs.
     - [ ]  Operators
     - [ ]  Patterns
@@ -36,7 +38,13 @@ Below is a list of topics that cover basic to advanced concepts in C#. This lear
     - [ ]  LinkedList
 - [x]  Methods and Functions: In this topic, you will learn about methods and functions in C#. You will learn how to declare, define, and call methods and functions in your programs.
     - [x]  Method parameters vs. arguments
-    - [ ]  Learn Ref (Passing by value, Passing by type)
+    - [x]  Passing by value, Passing by reference (”ref” keyword)
+        - [x]  Pass a value type by value (changes **aren't** visible from the caller.)
+        - [x]  Pass a value type by reference (changes **are** visible from the caller.)
+        - [x]  Pass a reference type by value (changes **are** visible from the caller)
+        - [x]  Pass a reference type by reference (changes **are** visible from the caller.)
+    - [x]  “in” keyword (pass parameter by reference in read-only mode, you can read its value but cannot modify it) ⇒ ***Recommended*** to use in normal and multi-threaded environment
+    - [x]  “out” keyword (similar to “ref” but it expect assign value to the parameter before returning)
     - [ ]  Return type
 - [ ]  Classes and Objects: This topic covers classes and objects in C#. You will learn how to declare and define classes, and how to create and use objects of these classes.
 - [ ]  Inheritance and Polymorphism: In this topic, you will learn about inheritance and polymorphism in C#. You will learn how to create and use derived classes, and how to use polymorphism to write more flexible and reusable code.

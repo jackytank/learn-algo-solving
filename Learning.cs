@@ -16,6 +16,11 @@ namespace Learning
         public double Y { get; }
         public readonly override string ToString() => $"{X} {Y}";
     }
+    public struct EmployeeStruct
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
 
     class Learn
     {
@@ -302,22 +307,20 @@ namespace Learning
         }
     }
 
-    class User
+    class Employee
     {
         public string FirstName { get; private set; }
         public string LastName { get; init; }
-        public string FullName { get; }
+        public string FullName { get; set; }
 
         public void Print() => System.Console.WriteLine($"{FirstName} {LastName} {FullName}");
     }
 
-    class DerivedUser : User
+    record RecordEmployee
     {
-        public DerivedUser()
-        {
-            LastName = "Derived User";
-        }
+        public string Name { get; set; }
     }
+
     class Customer : BaseAudit
     {
         public string Name
