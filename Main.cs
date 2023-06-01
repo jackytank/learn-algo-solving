@@ -17,11 +17,10 @@ namespace Learning
 
             // LearnDataTypes();
             // Learn.TestComplexLINQStyles();
-
-            var emp = new EmployeeStruct() { Name = "Test", Age = 21 };
-            System.Console.WriteLine($"{emp.Name} {emp.Age}");
-            ModifyUserInfo(out emp);
-            System.Console.WriteLine($"{emp.Name} {emp.Age}");
+            // var emp = new EmployeeStruct() { Name = "Test", Age = 21 };
+            // System.Console.WriteLine($"{emp.Name} {emp.Age}");
+            // ModifyUserInfo(out emp);
+            // System.Console.WriteLine($"{emp.Name} {emp.Age}");
 
         }
 

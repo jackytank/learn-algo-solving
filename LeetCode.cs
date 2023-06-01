@@ -6,6 +6,14 @@ namespace Learning
         {
             LengthOfLastWord("   fly me   to   the moon  ");
         }
+        // https://leetcode.com/problems/add-binary/
+        public static string AddBinary(string a, string b)
+        {
+            int _a = Convert.ToInt32(a, 2);
+            int _b = Convert.ToInt32(b, 2);
+            string res = Convert.ToString(_a + _b, 2);
+            return res;
+        }
 
         // https://leetcode.com/problems/length-of-last-word/
         public static int LengthOfLastWord(string s)
