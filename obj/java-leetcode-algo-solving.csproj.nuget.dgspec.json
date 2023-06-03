@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tminhto\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj": {}
+    "C:\\Users\\balis\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tminhto\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj": {
+    "C:\\Users\\balis\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tminhto\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj",
+        "projectUniqueName": "C:\\Users\\balis\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj",
         "projectName": "java-leetcode-algo-solving",
-        "projectPath": "C:\\Users\\tminhto\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj",
-        "packagesPath": "C:\\Users\\tminhto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tminhto\\Desktop\\java-leetcode-algo-solving\\obj\\",
+        "projectPath": "C:\\Users\\balis\\Desktop\\java-leetcode-algo-solving\\java-leetcode-algo-solving.csproj",
+        "packagesPath": "C:\\Users\\balis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\balis\\Desktop\\java-leetcode-algo-solving\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\tminhto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\balis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

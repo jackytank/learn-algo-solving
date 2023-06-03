@@ -9,12 +9,15 @@ public class Learning {
         Counter c = new Counter();
         Thread first = new Thread(c, "First");
         Thread second = new Thread(c, "Second");
+        Thread third = new Thread(c, "Third");
 
         first.start();
         second.start();
+        third.start();
 
         first.join();
         second.join();
+        third.join();
         System.out.println(c.count);
         ExecutorService service = Executors.newVirtualThreadPerTaskExecutor();
 

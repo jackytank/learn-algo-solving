@@ -6,13 +6,39 @@ namespace Learning
         {
             LengthOfLastWord("   fly me   to   the moon  ");
         }
+
+        // https://leetcode.com/problems/longest-consecutive-sequence/
+        public static int LongestConsecutive(int[] nums)
+        {
+            return 0;
+        }
+
         // https://leetcode.com/problems/add-binary/
         public static string AddBinary(string a, string b)
         {
-            int _a = Convert.ToInt32(a, 2);
-            int _b = Convert.ToInt32(b, 2);
-            string res = Convert.ToString(_a + _b, 2);
-            return res;
+            int smallestLen = a.Length < b.Length ? a.Length : b.Length;
+            string carry = "";
+            char[] res = new char[3];
+            for (int i = smallestLen - 1; i >= 0; i--)
+            {
+                if (a[i] == 0 && b[i] == 0)
+                {
+
+                }
+                else if (a[i] == 0 && b[i] == 1)
+                {
+
+                }
+                else if (a[i] == 1 && b[i] == 0)
+                {
+
+                }
+                else if (a[i] == 1 && b[i] == 1)
+                {
+
+                }
+            }
+            return "";
         }
 
         // https://leetcode.com/problems/length-of-last-word/
