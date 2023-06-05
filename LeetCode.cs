@@ -9,6 +9,23 @@ namespace Learning
             MinLength("CCCCDDDD");
         }
 
+        public static int MinLengthUsingStack(string s)
+        {
+            Stack<char> stack = new Stack<char>();
+            foreach (var item in s.ToCharArray())
+            {
+                if (stack.Count != 0 && (((char)stack.Peek() == 'A' && item == 'B') || ((char)stack.Peek() == 'C' && item == 'D')))
+                {
+                    stack.Pop();
+                }
+                else
+                {
+                    stack.Push(item);
+                }
+            }
+            return stack.Count;
+        }
+
         // https://leetcode.com/problems/minimum-string-length-after-removing-substrings/
         public static int MinLength(string s)
         {

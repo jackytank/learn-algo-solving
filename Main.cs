@@ -9,7 +9,7 @@ namespace Learning
     {
         static void Main(string[] args)
         {
-            LeetCode.LeetCodeMain();
+            // LeetCode.LeetCodeMain();
             // LearnStringInterpolation();
             // LearnCollections();
             // LearnMethodFunction();
@@ -21,6 +21,8 @@ namespace Learning
             // System.Console.WriteLine($"{emp.Name} {emp.Age}");
             // ModifyUserInfo(out emp);
             // System.Console.WriteLine($"{emp.Name} {emp.Age}");
+            // System.Console.WriteLine(string.Join(" ", Learn.TakeWhilePositive(new[] { 2, 3, 4, 5, -1, 3, 4 })));
+            Learn.TestRefReturn();
 
         }
 
@@ -40,11 +42,6 @@ namespace Learning
             var userInfo = user;
             userInfo.Name = "Changed by in";
         }
-
-
-
-
-
         private static void LearnDataTypes()
         {
             // String verbatim

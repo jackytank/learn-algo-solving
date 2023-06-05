@@ -24,6 +24,69 @@ namespace Learning
 
     class Learn
     {
+        public static void CheckMatrices(Dictionary<string, int[][]> matrixLookup, int target)
+        {
+            foreach (var (key, matrix) in matrixLookup)
+            {
+                for (int row = 0; row < matrix.Length; row++)
+                {
+                    for (int col = 0; col < matrix[row].Length; col++)
+                    {
+                        if(matrix[row][col] == target){
+                            goto Found;
+                        }
+                    }
+                }
+            }
+        }
+        public static void TestRefReturn()
+        {
+            var xs = new int[] { 1, 2, 3, 4, 30, 49 };
+            ref int found = ref FindFirst(xs, s => s == 30);
+            found = 0;
+            System.Console.WriteLine(string.Join(" ", xs));
+            xs = new int[] { 1, 2, 3, 4, 99, 49 };
+            found = 99999;
+            System.Console.WriteLine(string.Join(" ", xs));
+
+        }
+        public static ref int FindFirst(int[] numbers, Func<int, bool> predicate)
+        {
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (predicate(numbers[i]))
+                {
+                    return ref numbers[i];
+                }
+            }
+            throw new InvalidOperationException("No element satisfies the given condition");
+        }
+        public static IEnumerable<int> TakeWhilePositive(IEnumerable<int> numbers)
+        {
+            foreach (int n in numbers)
+            {
+                if (n > 0) yield return n;
+                else yield break;
+            }
+        }
+        public static IEnumerable<int> ProduceEvenNumbers(int upto)
+        {
+            for (int i = 0; i <= upto; i += 2)
+            {
+                yield return i;
+            }
+        }
+        public static async Task DoAsync()
+        {
+            Task<int> delayTask = DelayAsync();
+            int result = await delayTask;
+            System.Console.WriteLine($"Result: {result}");
+        }
+        public static async Task<int> DelayAsync()
+        {
+            await Task.Delay(100);
+            return 5;
+        }
         public static void LearnStringType()
         {
             string a = "hello";
