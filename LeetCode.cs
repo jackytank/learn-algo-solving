@@ -1,44 +1,37 @@
+using System.Text;
+
 namespace Learning
 {
     public class LeetCode
     {
         public static void LeetCodeMain()
         {
-            LengthOfLastWord("   fly me   to   the moon  ");
+            MinLength("CCCCDDDD");
+        }
+
+        // https://leetcode.com/problems/minimum-string-length-after-removing-substrings/
+        public static int MinLength(string s)
+        {
+            int i = 0;
+            while (i < s.Length - 1)
+            {
+                // take 2 current characters
+                string cur = s.Substring(i, 2);
+                if (cur.Equals("AB") || cur.Equals("CD"))
+                {
+                    s = s.Remove(i, 2);
+                    i = 0;
+                    continue;
+                }
+                i++;
+            }
+            return s.Length;
         }
 
         // https://leetcode.com/problems/longest-consecutive-sequence/
         public static int LongestConsecutive(int[] nums)
         {
             return 0;
-        }
-
-        // https://leetcode.com/problems/add-binary/
-        public static string AddBinary(string a, string b)
-        {
-            int smallestLen = a.Length < b.Length ? a.Length : b.Length;
-            string carry = "";
-            char[] res = new char[3];
-            for (int i = smallestLen - 1; i >= 0; i--)
-            {
-                if (a[i] == 0 && b[i] == 0)
-                {
-
-                }
-                else if (a[i] == 0 && b[i] == 1)
-                {
-
-                }
-                else if (a[i] == 1 && b[i] == 0)
-                {
-
-                }
-                else if (a[i] == 1 && b[i] == 1)
-                {
-
-                }
-            }
-            return "";
         }
 
         // https://leetcode.com/problems/length-of-last-word/
