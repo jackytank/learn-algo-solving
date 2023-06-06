@@ -1,30 +1,75 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 
 namespace Learning
 {
-    public struct Coords
-    {
-        public const int CONST_VALUE = 2;
-        public readonly int READONLY_VALUE;
-        public readonly void GetShit() { }
-        public Coords(double x, double y)
-        {
-            X = x;
-            Y = y;
-        }
-        public double X { get; }
-        public double Y { get; }
-        public readonly override string ToString() => $"{X} {Y}";
-    }
-    public struct EmployeeStruct
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
-    }
-
     class Learn
     {
-        public static void CheckMatrices(Dictionary<string, int[][]> matrixLookup, int target)
+        public static void TestSpan()
+        {
+            var arr = new byte[10];
+            Span<byte> bytes = arr;
+            Span<byte> slicedBytes = bytes.Slice(start: 5, length: 2);
+            slicedBytes[0] = 42;
+            slicedBytes[1] = 43;
+            // System.Console.WriteLine($"{arr[5]} {arr[6]}");
+            // System.Console.WriteLine($"{slicedBytes[0]} {slicedBytes[1]}");
+            string str = "hello, world";
+            string worldString = str.Substring(startIndex: 7, length: 5);
+            ReadOnlySpan<char> worldSpan = str.AsSpan().Slice(start: 7, length: 5);
+            int[] array = new[] { 0, 1, 2, 3, 4, 5, 6 };
+            Span<int> arrSpan = array.AsSpan();
+            List<int> list = new() { 0, 1, 2, 3, 4, 5, 6 };
+            Span<int> listSpan = CollectionsMarshal.AsSpan(list);
+            string input = "123,456";
+            ReadOnlySpan<char> span = input.AsSpan();
+            int commaPos = span.IndexOf(',');
+            int first = int.Parse(span.Slice(0, commaPos));
+            int second = int.Parse(span.Slice(commaPos + 1));
+            System.Console.WriteLine(input);
+            System.Console.WriteLine(first);
+            System.Console.WriteLine(second);
+        }
+        public static void TestRefReturnTypeWithSpan()
+        {
+            Span<int> storage = stackalloc int[10];
+            int num = 0;
+            foreach (ref int item in storage)
+            {
+                item = num++;
+            }
+            foreach (ref readonly var item in storage)
+            {
+                System.Console.WriteLine($"{item}");
+            }
+        }
+        public enum CoffeeChoice
+        {
+            Plain,
+            WithMilk,
+            WithIceCream,
+        }
+
+        // goto statement
+        public static decimal CalPriceWithGoto(CoffeeChoice choice)
+        {
+            decimal price = 0;
+            switch (choice)
+            {
+                case CoffeeChoice.Plain:
+                    price += 10.0m;
+                    break;
+                case CoffeeChoice.WithMilk:
+                    price += 5.0m;
+                    goto case CoffeeChoice.Plain;
+                case CoffeeChoice.WithIceCream:
+                    price += 7.0m;
+                    goto case CoffeeChoice.Plain;
+            }
+            return price;
+        }
+        // goto statement
+        public static void CheckMatricesWithGoto(Dictionary<string, int[][]> matrixLookup, int target)
         {
             foreach (var (key, matrix) in matrixLookup)
             {
@@ -32,23 +77,27 @@ namespace Learning
                 {
                     for (int col = 0; col < matrix[row].Length; col++)
                     {
-                        if(matrix[row][col] == target){
+                        if (matrix[row][col] == target)
+                        {
                             goto Found;
                         }
                     }
                 }
+                Console.WriteLine($"Found {target} in matrix {key}.");
+                continue;
+            Found:
+                Console.WriteLine($"Found {target} in matrix {key}.");
             }
         }
+        // ref return
         public static void TestRefReturn()
         {
             var xs = new int[] { 1, 2, 3, 4, 30, 49 };
             ref int found = ref FindFirst(xs, s => s == 30);
-            found = 0;
+            ref int newValue = ref found;
+            newValue = 99;
             System.Console.WriteLine(string.Join(" ", xs));
-            xs = new int[] { 1, 2, 3, 4, 99, 49 };
-            found = 99999;
-            System.Console.WriteLine(string.Join(" ", xs));
-
+            System.Console.WriteLine(newValue);
         }
         public static ref int FindFirst(int[] numbers, Func<int, bool> predicate)
         {
@@ -69,6 +118,7 @@ namespace Learning
                 else yield break;
             }
         }
+        // yield return
         public static IEnumerable<int> ProduceEvenNumbers(int upto)
         {
             for (int i = 0; i <= upto; i += 2)
@@ -203,6 +253,25 @@ namespace Learning
 
             // Conclusions: I Prefer the method style to write LINQ
         }
+    }
+    public struct Coords
+    {
+        public const int CONST_VALUE = 2;
+        public readonly int READONLY_VALUE;
+        public readonly void GetShit() { }
+        public Coords(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+        public double X { get; }
+        public double Y { get; }
+        public readonly override string ToString() => $"{X} {Y}";
+    }
+    public struct EmployeeStruct
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
     }
     class TestMotorcycle : Motorcycle
     {

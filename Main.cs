@@ -22,7 +22,7 @@ namespace Learning
             // ModifyUserInfo(out emp);
             // System.Console.WriteLine($"{emp.Name} {emp.Age}");
             // System.Console.WriteLine(string.Join(" ", Learn.TakeWhilePositive(new[] { 2, 3, 4, 5, -1, 3, 4 })));
-            Learn.TestRefReturn();
+            Learn.TestSpan();
 
         }
 
