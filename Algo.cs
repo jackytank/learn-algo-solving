@@ -6,15 +6,18 @@ namespace Learning
     {
         public static void LeetCodeMain()
         {
-            MinLength("CCCCDDDD");
+            PracticeLINQ();
         }
-        public static int NbDig(int n, int d)
+        public static void PracticeLINQ()
         {
-            var res = Enumerable.Range(0, n).Select(x => (int)Math.Pow(x, 2))
-            .Where(x => {
+            // Minimum Length
+            var list = new List<string>() { "computer", "usb", "asp" };
+            list.Where(x => x.Length >= 5).Select(x => x.ToUpper());
 
-            });
-            return 1;
+            // Select words
+            var list2 = new List<string>() { "mum", "amsterdam", "bloom", "usb" };
+            list2.Where(x => x.StartsWith('a') && x.EndsWith('m')).Select(x => x);
+            
         }
         public static int MinLengthUsingStack(string s)
         {
