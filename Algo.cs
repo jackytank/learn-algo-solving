@@ -8,7 +8,14 @@ namespace Learning
         {
             MinLength("CCCCDDDD");
         }
+        public static int NbDig(int n, int d)
+        {
+            var res = Enumerable.Range(0, n).Select(x => (int)Math.Pow(x, 2))
+            .Where(x => {
 
+            });
+            return 1;
+        }
         public static int MinLengthUsingStack(string s)
         {
             Stack<char> stack = new Stack<char>();

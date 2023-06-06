@@ -1,10 +1,163 @@
 using System.Collections;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace Learning
 {
     class Learn
     {
+        public static void TestTypeTestingOperator()
+        {
+            IEnumerable<int> numbers = new[] { 10, 20, 30, 40, 50, 100, 200, 300 };
+            IList<int>? indexable = numbers as IList<int>;
+            if (indexable != null)
+            {
+                Console.WriteLine(indexable[0] + indexable[indexable.Count - 1]);  // output: 40
+            }
+        }
+
+        public record NamedPoint(string Name, int X, int Y);
+
+        public static void TestWithExpression()
+        {
+            var p1 = new NamedPoint("A", 0, 0);
+            System.Console.WriteLine($"{nameof(p1)} : {p1}");
+
+            var p2 = p1 with { Name = "B", X = 5 };
+            System.Console.WriteLine($"{nameof(p2)} : {p2}");
+
+            var apples = new { Item = "Apples", Price = 1.19m };
+            var saleApples = apples with { Price = 0.79m };
+        }
+
+        public static void TestPatternMatching()
+        {
+            object? @object = "This is not null string";
+            if (@object is not null)
+            {
+                System.Console.WriteLine(@object);
+            }
+            dynamic? result = @object switch
+            {
+                string @string => @$"{@string}: is a string ",
+                int @int => $@"{@int} is a number",
+                Array array => string.Format("{0} is an array", array),
+                null => 0,
+                double.NaN => "Unknown",
+                ICollection collection => "{0} is a collection".Replace("{0}", $"{collection}"),
+                _ => null
+            };
+            if (result is string str
+                && result is not null
+                && result is not (float or double or decimal or int or uint))
+            {
+                System.Console.WriteLine(str);
+            }
+
+            DateTime[] dates = new[]{
+                new DateTime(2021, 3, 14),
+                new DateTime(2021, 7, 19),
+                new DateTime(2021, 2, 17),
+                DateTime.Now,
+                DateTime.UtcNow,
+                new DateTime(2002, 11, 17)
+            };
+            foreach (var item in dates)
+            {
+                // System.Console.WriteLine($"{GetCalendarSeason(item)}, is my birthday: {IsMyBirthDay(item)}");
+            }
+            // Console.WriteLine(TakeFive("Hello, world!"));  // output: Hello
+            // Console.WriteLine(TakeFive("Hi!"));  // output: Hi!
+            // Console.WriteLine(TakeFive(new[] { '1', '2', '3', '4', '5', '6', '7' }));  // output: 12345
+            // Console.WriteLine(TakeFive(new[] { 'a', 'b', 'c' }));  // output: abc
+
+        }
+        private void Hello() => global::System.Console.WriteLine("Hello");
+        private static bool IsAcceptable(int id, int absLimit) =>
+            SimulateDataFetch(id) is var results
+            && results.Min() >= -absLimit
+            && results.Max() <= absLimit;
+        private static int[] SimulateDataFetch(int id)
+        {
+            var rand = new Random();
+            return Enumerable
+                .Range(start: 0, count: 5)
+                .Select(s => rand.Next(minValue: -10, maxValue: 11))
+                .ToArray();
+        }
+        private static string TakeFive(object input) => input switch
+        {
+            string { Length: >= 5 } s => s.Substring(0, 5),
+            string s => s,
+            ICollection<char> { Count: >= 5 } symbols => new string(symbols.Take(5).ToArray()),
+            ICollection<char> symbols => new string(symbols.ToArray()),
+            null => throw new ArgumentNullException(nameof(input)),
+            _ => throw new ArgumentException("Not supported input type"),
+        };
+        private static bool IsMyBirthDay(DateTime date) => date is { Year: 2002, Month: 11, Day: 17 };
+        private static string GetCalendarSeason(DateTime date) => date.Month switch
+        {
+            >= 3 and < 6 => "spring",
+            >= 6 and < 9 => "summer",
+            >= 9 and < 12 => "autumn",
+            12 or (>= 1 and < 3) => "winter",
+            _ => throw new ArgumentOutOfRangeException(nameof(date), $"Date with unexpected month: {date.Month}.")
+        };
+        class CustomExceptions : Exception
+        {
+            public CustomExceptions() : base() { }
+            public CustomExceptions(string message) : base(message) { }
+            public CustomExceptions(string message, Exception inner) : base(message, inner) { }
+        }
+        public static void TestTryCatch()
+        {
+            FileStream? file = null;
+            FileInfo fileInfo = new FileInfo("./test.txt");
+            int awesomeScore = 70;
+            // First try-catch
+            try
+            {
+                file = fileInfo.OpenWrite();
+                file.WriteByte(0xF);
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                System.Console.WriteLine(ex);
+            }
+            catch (CustomExceptions ex) when (awesomeScore < 70)
+            {
+                System.Console.WriteLine(ex);
+            }
+            catch (IOException ex) when (awesomeScore < 50)
+            {
+                System.Console.WriteLine(ex);
+            }
+            finally
+            {
+                file?.Close();
+            }
+            // Second try-catch
+            try
+            {
+                file = fileInfo.OpenWrite();
+                Console.WriteLine("OpenWrite() succeeded");
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("OpenWrite() failed");
+            }
+            // Third try-catch
+            Regex regex = new Regex("^[a-zA-Z]+$");
+            string name = "hello";
+            if (!regex.IsMatch(name))
+            {
+                throw new CustomExceptions($"Name {name} is not valid!");
+            }
+            else
+            {
+                System.Console.WriteLine($"{name} is valid");
+            }
+        }
         public static void TestSpan()
         {
             var arr = new byte[10];
@@ -26,9 +179,29 @@ namespace Learning
             int commaPos = span.IndexOf(',');
             int first = int.Parse(span.Slice(0, commaPos));
             int second = int.Parse(span.Slice(commaPos + 1));
-            System.Console.WriteLine(input);
-            System.Console.WriteLine(first);
-            System.Console.WriteLine(second);
+            string[] logs = new string[]
+                {
+                    "a1K3vlCTZE6GAtNYNAi5Vg::05/12/2022 09:10:00 AM::http://localhost:2923/api/customers/getallcustomers",
+                    "mpO58LssO0uf8Ced1WtAvA::05/12/2022 09:15:00 AM::http://localhost:2923/api/products/getallproducts",
+                    "2KW1SfJOMkShcdeO54t1TA::05/12/2022 10:25:00 AM::http://localhost:2923/api/orders/getallorders",
+                    "x5LmCTwMH0isd1wiA8gxIw::05/12/2022 11:05:00 AM::http://localhost:2923/api/orders/getallorders",
+                    "7IftPSBfCESNh4LD9yI6aw::05/12/2022 11:40:00 AM::http://localhost:2923/api/products/getallproducts"
+                };
+            const string colon = ":";
+            const string doubleColon = "::";
+            foreach (ref readonly var item in logs.AsSpan())
+            {
+                var curSpan = item.AsSpan();
+                var colonIndex = curSpan.IndexOf(colon);
+                var doubleColonIndex = curSpan.LastIndexOf(doubleColon);
+
+                var requestId = curSpan.Slice(0, colonIndex);
+                var dateTime = curSpan.Slice(colonIndex + 2, 22);
+                var requestUrl = curSpan.Slice(doubleColonIndex + 2);
+                var template = $"Request ID: {requestId}\nDateTime: {dateTime}\nRequest URL: {requestUrl}";
+                System.Console.WriteLine(template);
+                System.Console.WriteLine("********************************");
+            }
         }
         public static void TestRefReturnTypeWithSpan()
         {

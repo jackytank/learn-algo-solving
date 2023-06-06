@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.*;
 
-public class LeetCode {
+public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
         // System.out.println(n));

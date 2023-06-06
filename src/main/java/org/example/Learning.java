@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Learning {
@@ -19,8 +17,6 @@ public class Learning {
         second.join();
         third.join();
         System.out.println(c.count);
-        ExecutorService service = Executors.newVirtualThreadPerTaskExecutor();
-
     }
 }
 

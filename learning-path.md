@@ -25,17 +25,30 @@ Below is a list of topics that cover basic to advanced concepts in C#. This lear
     - [x]  “ref” keyword and reference types
         - When a reference type (such as an object) is passed by value to a method in C#, a copy of the reference is created and passed to the method. Mean: original reference and the copy of the reference both point to the same object in memory
         - using “ref” with primitive type the behavior is expected
-- [ ]  Operators: This topic covers the different types of operators in C#, such as arithmetic, logical, and comparison operators. You will also learn how to use operators to perform different operations in your programs.
-    - [ ]  Operators
-    - [ ]  Patterns
+- [x]  Operators: This topic covers the different types of operators in C#, such as arithmetic, logical, and comparison operators. You will also learn how to use operators to perform different operations in your programs.
+    - [x]  Operators (is, new, sizeof, delegate, cast, as)
+        - as: should use if uncertain if conversion is success
+        - cast: use if certain the conversion will be succeed
+        - is, as, typeof: can be overloaded
+    - [x]  Expression (with, switch, stackalloc, default)
 - [x]  Control Flow Statements: In this topic, you will learn about control flow statements in C#, such as if-else statements, switch statements, and loops. You will also learn how to use these statements to control the flow of your programs.
+    - [x]  Jump statement
+        - [x]  ref return
+        - [x]  goto statement (can use in for-loop and switch )
+    - [x]  Iterative statement
+        - [x]  foreach: use ref inside statement (recommend using ref readonly)
+- [x]  Low-level shits
+    - [x]  Span<T> (for string should use .AsSpan().Slice instead of .SubString() )
+    - [ ]  Memory<T>
+- [x]  Functional technique & patterns
+    - [x]  Pattern matching (declaration pattern, constant pattern, logical pattern,…)
 - [x]  Arrays and Collections: This topic covers arrays and collections in C#. You will learn how to declare, initialize, and use arrays and collections in your programs.
     - [x]  List, ArrayList
     - [x]  Dictionary
     - [x]  HashTable
     - [x]  Stack
+    - [x]  LinkedList
     - [ ]  Queue
-    - [ ]  LinkedList
 - [x]  Methods and Functions: In this topic, you will learn about methods and functions in C#. You will learn how to declare, define, and call methods and functions in your programs.
     - [x]  Method parameters vs. arguments
     - [x]  Passing by value, Passing by reference (”ref” keyword)
@@ -45,12 +58,15 @@ Below is a list of topics that cover basic to advanced concepts in C#. This lear
         - [x]  Pass a reference type by reference (changes **are** visible from the caller.)
     - [x]  “in” keyword (pass parameter by reference in read-only mode, you can read its value but cannot modify it) ⇒ ***Recommended*** to use in normal and multi-threaded environment
     - [x]  “out” keyword (similar to “ref” but it expect assign value to the parameter before returning)
-    - [ ]  Return type
+    - [x]  Return type
+        - [x]  yield return (for foreach-loop to loop over instead of return individual value)
+        - [x]  ref return (return as a reference to a variable)
 - [ ]  Classes and Objects: This topic covers classes and objects in C#. You will learn how to declare and define classes, and how to create and use objects of these classes.
 - [ ]  Inheritance and Polymorphism: In this topic, you will learn about inheritance and polymorphism in C#. You will learn how to create and use derived classes, and how to use polymorphism to write more flexible and reusable code.
 - [ ]  Interfaces: This topic covers interfaces in C#. You will learn how to declare and define interfaces, and how to use them to write code that is more flexible and extensible.
 - [ ]  Delegates and Events: In this topic, you will learn about delegates and events in C#. You will learn how to declare and use delegates and events, and how to write event handlers for different types of events.
-- [ ]  Exception Handling: This topic covers exception handling in C#. You will learn how to handle exceptions in your programs, and how to write code that is more robust and reliable.
+- [x]  Exception Handling: This topic covers exception handling in C#. You will learn how to handle exceptions in your programs, and how to write code that is more robust and reliable.
+    - Don't throw System.Exception, System.SystemException, System.NullReferenceException, or System.IndexOutOfRangeException
 - [x]  LINQ: In this topic, you will learn about LINQ (Language-Integrated Query) in C#. You will learn how to use LINQ to query different data sources, such as arrays, collections, and databases.
     - [x]  LINQ Method style
         - [x]  On Collections source
