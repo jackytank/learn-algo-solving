@@ -6,19 +6,9 @@ namespace Learning
     {
         public static void LeetCodeMain()
         {
-            PracticeLINQ();
-        }
-        public static void PracticeLINQ()
-        {
-            // Minimum Length
-            var list = new List<string>() { "computer", "usb", "asp" };
-            list.Where(x => x.Length >= 5).Select(x => x.ToUpper());
 
-            // Select words
-            var list2 = new List<string>() { "mum", "amsterdam", "bloom", "usb" };
-            list2.Where(x => x.StartsWith('a') && x.EndsWith('m')).Select(x => x);
-            
         }
+
         public static int MinLengthUsingStack(string s)
         {
             Stack<char> stack = new Stack<char>();

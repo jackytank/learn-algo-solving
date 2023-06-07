@@ -1,38 +1,57 @@
 package org.example;
 
+import java.lang.reflect.Array;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class Learning {
-    public static void main(String[] args) throws InterruptedException {
-        Counter c = new Counter();
-        Thread first = new Thread(c, "First");
-        Thread second = new Thread(c, "Second");
-        Thread third = new Thread(c, "Third");
-
-        first.start();
-        second.start();
-        third.start();
-
-        first.join();
-        second.join();
-        third.join();
-        System.out.println(c.count);
+    public static void main(String[] args) {
+        StreamAPI.learn();
     }
 }
 
-class Counter implements Runnable {
+class StreamAPI {
+    public static void learn() {
+        // Minimum Length - minimum length of 5
+        var list1 = Arrays.asList("computer", "usb", "asp");
+        list1.stream().filter(x -> x.length() >= 5);
 
-    AtomicInteger count;
+        // Select words - start with a, end with m
+        var list2 = Arrays.asList("mum", "amsterdam", "bloom", "usb");
+        list2.stream().filter(x -> x.startsWith("a") && x.endsWith("m"));
 
-    public Counter() {
-        count = new AtomicInteger();
-    }
+        // returns top 5 numbers from the list of integers in descending order.
+        var list3 = Arrays.asList(78, -9, 0, 23, 54, 21, 7, 86);
+        list3.stream().sorted(Comparator.reverseOrder()).limit(5);
 
-    @Override
-    public void run() {
-        int max = 1_000_000;
-        for (int i = 0; i < max; i++) {
-            count.addAndGet(1);
-        }
+        // square greater than 20
+        var list4 = Arrays.asList(7, 2, 30, 1, -2, 3, 4);
+        list4.stream().map(x -> Math.round(Math.pow(x, 2)))
+                .filter(x -> x > 20);
+
+        // replace ea to *
+        var list5 = Arrays.asList("learn", "current", "deal");
+        list5.stream().map(x -> x.replace("ea", "*"));
+
+        // last word containing letter 'e'
+        var list6 = Arrays.asList("plane", "ferry", "car", "bike");
+        var res6 = list6.stream().sorted(Comparator.naturalOrder())
+                .reduce((first, second) -> second).get();
+
+        // shuffle sorted array
+        var list7 = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Collections.shuffle(list7);
+
+        // most frequent character
+        var str8 = "n093nfv034nie9";
+        str8.chars()
+
+
+
     }
 }

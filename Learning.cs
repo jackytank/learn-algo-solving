@@ -6,6 +6,76 @@ namespace Learning
 {
     class Learn
     {
+        public static void PracticeLINQ()
+        {
+            // Minimum Length - minimum length of 5
+            var list = new List<string>() { "computer", "usb", "asp" };
+            list.Where(x => x.Length >= 5).Select(x => x.ToUpper());
+            var query = from x in list
+                        where x.Length >= 5
+                        select x.ToUpper();
+            // foreach (var item in query) { System.Console.WriteLine(item); }
+
+            // Select words - start with a, end with m
+            var list2 = new List<string>() { "mum", "amsterdam", "bloom", "usb" };
+            list2.Where(x => x.StartsWith('a') && x.EndsWith('m'))
+                .Select(x => x);
+            // .ToList().ForEach(x => System.Console.WriteLine(x));
+            var query2 = from x in list2
+                         where x.StartsWith('a') && x.EndsWith('m')
+                         select x;
+            // foreach (var item in query2) { System.Console.WriteLine(item); }
+
+            // Top 5 numbers - returns top 5 numbers from the 
+            // list of integers in descending order.
+            var list3 = new List<int>() { 78, -9, 0, 23, 54, 21, 7, 86 };
+            list3.Select(x => x).OrderDescending().Take(5).ToList();
+            // .ForEach(x => System.Console.WriteLine(x));
+            var query3 = (from x in list3
+                          orderby x descending
+                          select x).Take(5);
+            // foreach (var item in query3) { System.Console.WriteLine(item); };
+
+
+            // Square greater than 20
+            var list4 = new List<int> { 7, 2, 30, 1, -2, 3, 4 };
+            list4.Select(x => Math.Pow(x, 2)).Where(x => x > 20).ToList();
+            // .ForEach(x => System.Console.WriteLine(x));
+            var query4 = from x in list4
+                         let y = Math.Pow(x, 2)
+                         where y > 20
+                         select y;
+            // foreach (var item in query4) { System.Console.WriteLine(item); };
+
+            // replaces 'ea' substring with astersik (*) in given list of words.
+            var list5 = new List<string> { "learn", "current", "deal" };
+            list5.Select(x => x.Replace("ea", "*")).ToList();
+            // .ForEach(x => Console.WriteLine($"{x}"));
+            var query5 = from x in list5
+                         select x.Replace("ea", "*");
+            // foreach (var item in query5) { System.Console.WriteLine($"{item}"); }
+
+            // Write a query that shuffles sorted array.
+            var list6 = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            list6.OrderBy(x => new Random().Next()).ToList();
+            // .ForEach(x => System.Console.WriteLine(x));
+            var query6 = from x in list6
+                         let y = list6[new Random().Next(0, list6.Count - 1)]
+                         select y;
+            // foreach (var item in query6) { System.Console.WriteLine($"{item}"); }
+
+            // Most frequent character
+            var str = "n093nfv034nie9";
+            var mostFrequent = str.GroupBy(c => c).OrderByDescending(c => c.Count()).First().Key;
+            // System.Console.WriteLine(mostFrequent);
+
+            var list7 = new List<string>() { "abc", "xyz", "klm", "xyz", "abc", "abc", "rst" };
+            list7.GroupBy(x => x)
+                .Where(x => x.Count() == 1)
+                .Select(x => x.Key)
+                .ToList()
+                .ForEach(x => System.Console.WriteLine($"{x}"));
+        }
         public static void TestTypeTestingOperator()
         {
             IEnumerable<int> numbers = new[] { 10, 20, 30, 40, 50, 100, 200, 300 };
