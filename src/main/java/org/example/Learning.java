@@ -9,6 +9,11 @@ import java.util.stream.Stream;
 import lombok.Getter;
 import lombok.Setter;
 
+import static java.util.Map.Entry.comparingByValue;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
+
 public class Learning {
     public static void main(String[] args) {
         StreamAPI.learn();
@@ -49,7 +54,15 @@ class StreamAPI {
 
         // most frequent character
         var str8 = "n093nfv034nie9";
-        str8.chars()
+        var res8 = str8.chars()
+                .mapToObj(x -> (char) x)
+                .collect(groupingBy(x -> x, counting()))
+                .entrySet()
+                .stream()
+                .max(comparingByValue())
+                .get()
+                .getKey();
+        System.out.println(res8);
 
 
 
