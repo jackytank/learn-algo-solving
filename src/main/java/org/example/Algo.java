@@ -1,12 +1,34 @@
 package org.example;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        // System.out.println(n));
+        isPalindrome("a.");
+    }
 
+    // https://leetcode.com/problems/valid-palindrome/
+    public static boolean isPalindrome(String s) {
+        if (s.isEmpty()) return false;
+        String str = s.chars()
+                .filter(Character::isLetterOrDigit)
+                .mapToObj(x -> Character.toLowerCase((char) x))
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
+        int l = 0;
+        int r = str.length() - 1;
+        while (l < r) {
+            if (str.charAt(l) == str.charAt(r)) {
+                l++;
+                r--;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
     // https://leetcode.com/problems/plus-one/
@@ -257,7 +279,7 @@ public class Algo {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {
-                return new int[] { map.get(target - nums[i]), i };
+                return new int[]{map.get(target - nums[i]), i};
             }
             map.put(nums[i], i);
         }
