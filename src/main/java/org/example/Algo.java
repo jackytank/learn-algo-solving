@@ -7,7 +7,28 @@ import java.util.stream.Stream;
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        isPalindrome("a.");
+        longestPalindrome("aaaa");
+    }
+
+    // https://leetcode.com/problems/detect-capital/
+    public static boolean detectCapitalUse(String word) {
+
+    }
+
+    // https://leetcode.com/problems/longest-palindrome/
+    public static int longestPalindrome(String s) {
+        if (s.length() == 2 && (s.charAt(0) == s.charAt(1))) return 2;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                map.remove(s.charAt(i));
+            } else {
+                map.put(s.charAt(i), i);
+            }
+        }
+        int res = s.length() - map.size();
+        if (s.length() == res) return res;
+        return res % 2 == 0 ? res + 1 : res;
     }
 
     // https://leetcode.com/problems/valid-palindrome/
