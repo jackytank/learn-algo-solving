@@ -1,0 +1,33 @@
+
+l
+java:S36550"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ú Ý78ªÅç®‰1
+l
+java:S36559"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(öÿ÷8–¿ë®‰1
+O
+java:S3958'"2Refactor the code so this stream pipeline is used.(…‚½±8¬Åç®‰1
+O
+java:S3958"2Refactor the code so this stream pipeline is used.(ûÊªª8«Åç®‰1
+O
+java:S3958,"2Refactor the code so this stream pipeline is used.(¿¨Ù 8«Åç®‰1
+T
+java:S3958#"2Refactor the code so this stream pipeline is used.(ü±Æóúÿÿÿÿ8«Åç®‰1
+T
+java:S3958"2Refactor the code so this stream pipeline is used.(¤ÅØ¯ÿÿÿÿÿ8«Åç®‰1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(£…Ö½ùÿÿÿÿ8ÀÅç®‰1
+T
+java:S18540"8Remove this useless assignment to local variable "res6".(ú Ý78ÄÅç®‰1
+E
+java:S14810")Remove this unused "res6" local variable.(ú Ý78ðÅç®‰1
+U	java:S106A"9Replace this use of System.out or System.err by a logger.(š°¢Ê8¯êí®‰1
+h
+java:S1128"FRemove this unused import 'java.util.concurrent.atomic.AtomicInteger'.(¿êäœøÿÿÿÿ8°¿ë®‰1
+Z
+java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ8°¿ë®‰1
+Q
+java:S1128"4Remove this unused import 'java.util.stream.Stream'.(ó÷Ž”8±¿ë®‰1
+G
+java:S1128	"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8±¿ë®‰1
+G
+java:S1128
+"*Remove this unused import 'lombok.Setter'.(ó¸çµ8±¿ë®‰1

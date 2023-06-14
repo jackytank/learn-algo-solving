@@ -7,12 +7,16 @@ import java.util.stream.Stream;
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        longestPalindrome("aaaa");
+        detectCapitalUse("FlaG");
     }
 
     // https://leetcode.com/problems/detect-capital/
     public static boolean detectCapitalUse(String word) {
-
+        String lowerStr = word.toLowerCase();
+        boolean allAreNot = lowerStr.equals(word);
+        boolean allAre = word.toUpperCase().equals(word);
+        boolean onlyFirst = Character.isUpperCase(word.charAt(0)) && word.substring(1).equals(lowerStr.substring(1));
+        return allAreNot || allAre || onlyFirst;
     }
 
     // https://leetcode.com/problems/longest-palindrome/
