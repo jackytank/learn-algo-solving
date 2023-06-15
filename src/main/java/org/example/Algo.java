@@ -12,6 +12,7 @@ public class Algo {
 
     // https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150
     public static int majorityElement(int[] nums) {
+        if (nums.length == 1) return nums[0];
         Map<Integer, Integer> map = new HashMap<>();
         int minTime = nums.length / 2;
         for (int i = 0; i < nums.length; i++) {
