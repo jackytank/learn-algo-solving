@@ -7,7 +7,34 @@ import java.util.stream.Stream;
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2});
+        isIsomorphic("paper","title");
+    }
+
+    // https://leetcode.com/problems/isomorphic-strings/description/?envType=study-plan-v2&envId=top-interview-150
+    public static boolean isIsomorphic(String s, String t) {
+        if (s.length() != t.length()) return false;
+        var mapS = new HashMap<Character, Integer>();
+        var mapT = new HashMap<Character, Integer>();
+        for (int i = 0; i < s.length(); i++) {
+            char curS = s.charAt(i);
+            char curT = t.charAt(i);
+            if (mapS.containsKey(curS)) {
+                int val = mapS.get(curS);
+                mapS.put(curS, val + 1);
+            } else if (mapT.containsKey(curT)) {
+                int val = mapT.get(curT);
+                mapT.put(curT, val + 1);
+            } else {
+                mapS.put(curS, 1);
+                mapT.put(curT, 1);
+            }
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (!Objects.equals(mapS.get(s.charAt(i)), mapT.get(t.charAt(i)))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // https://leetcode.com/problems/is-subsequence/?envType=study-plan-v2&envId=top-interview-150
