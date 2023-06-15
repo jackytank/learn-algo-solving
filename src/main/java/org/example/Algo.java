@@ -7,7 +7,24 @@ import java.util.stream.Stream;
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        detectCapitalUse("FlaG");
+        maxProfit(new int[]{2, 1, 4});
+    }
+
+    // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+    public static int maxProfit(int[] prices) {
+        int least = Integer.MAX_VALUE;
+        int overralProfit = 0;
+        int profitSoldToday = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (least > prices[i]) {
+                least = prices[i];
+            }
+            profitSoldToday = prices[i] - least;
+            if (overralProfit < profitSoldToday) {
+                overralProfit = profitSoldToday;
+            }
+        }
+        return overralProfit;
     }
 
     // https://leetcode.com/problems/detect-capital/
