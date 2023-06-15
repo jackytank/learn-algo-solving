@@ -7,7 +7,23 @@ import java.util.stream.Stream;
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        maxProfit(new int[]{2, 1, 4});
+        majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2});
+    }
+
+    // https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150
+    public static int majorityElement(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int minTime = nums.length / 2;
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                int val = map.get(nums[i]);
+                map.put(nums[i], val + 1);
+                if (val + 1 > minTime) return nums[i];
+            } else {
+                map.put(nums[i], 1);
+            }
+        }
+        return 0;
     }
 
     // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
