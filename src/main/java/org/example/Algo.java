@@ -10,6 +10,23 @@ public class Algo {
         majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2});
     }
 
+    // https://leetcode.com/problems/is-subsequence/?envType=study-plan-v2&envId=top-interview-150
+    public static boolean isSubsequence(String s, String t) {
+        if (s.isEmpty()) return true;
+        var stack = new Stack<Character>();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            stack.push(s.charAt(i));
+        }
+        for (int i = 0; i < t.length(); i++) {
+            if (!stack.isEmpty()) {
+                if (stack.peek() == t.charAt(i)) {
+                    stack.pop();
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
     // https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150
     public static int majorityElement(int[] nums) {
         if (nums.length == 1) return nums[0];
