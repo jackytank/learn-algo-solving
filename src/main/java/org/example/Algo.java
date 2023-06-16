@@ -13,19 +13,10 @@ public class Algo {
         Map<Integer, List<Integer>> map = new HashMap<>();
         Set<List<Integer>> seenTriplet = new HashSet<>();
         List<List<Integer>> res = new ArrayList<>();
-        if (nums.length == 3) {
-            if (nums[0] + nums[1] + nums[2] == 0) {
-                res.add(List.of(nums[0], nums[1], nums[2]));
-            }
-            return res;
-        }
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
-                int complement = 0 - nums[i] - nums[j];
+                int complement = -nums[i] - nums[j];
                 if (map.containsKey(complement)) {
-                    List<Integer> indices = map.get(complement);
-                    List<Integer> newIndices = Arrays.asList(i, j);
-                    indices.addAll(newIndices);
                     var newTriplet = Arrays.asList(nums[i], nums[j], complement);
                     if (seenTriplet.add(newTriplet)) {
                         res.add(newTriplet);
