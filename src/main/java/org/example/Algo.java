@@ -7,32 +7,59 @@ import java.util.stream.Stream;
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        isIsomorphic("paper","title");
+        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+    }
+
+    // https://leetcode.com/problems/3sum/?envType=study-plan-v2&envId=top-interview-150
+    public static List<List<Integer>> threeSum(int[] nums) {
+        var map = new HashMap<Integer, Integer>();
+        var hset = new HashSet<Integer>();
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (hset.add(i + j)) {
+                    int complement = 0 - nums[i] - nums[j];
+                    if (map.containsKey(complement)) {
+                        var newList = List.of(nums[i], nums[j], complement);
+                        res.add(newList);
+                    } else {
+                        map.put(complement, i + j);
+                    }
+                }
+            }
+        }
+        return res;
+    }
+
+    // https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/?envType=study-plan-v2&envId=top-interview-150
+    public static int[] twoSumSortedArray(int[] numbers, int target) {
+        int l = 0;
+        int r = numbers.length - 1;
+        int[] res = new int[2];
+        int sum = 0;
+        while (l < r) {
+            sum = numbers[l] + numbers[r];
+            if (sum == target) {
+                res[0] = l + 1;
+                res[1] = r + 1;
+                break;
+            } else if (sum < target) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+        return res;
     }
 
     // https://leetcode.com/problems/isomorphic-strings/description/?envType=study-plan-v2&envId=top-interview-150
     public static boolean isIsomorphic(String s, String t) {
-        if (s.length() != t.length()) return false;
-        var mapS = new HashMap<Character, Integer>();
-        var mapT = new HashMap<Character, Integer>();
+        var map1 = new int[127];
+        var map2 = new int[127];
         for (int i = 0; i < s.length(); i++) {
-            char curS = s.charAt(i);
-            char curT = t.charAt(i);
-            if (mapS.containsKey(curS)) {
-                int val = mapS.get(curS);
-                mapS.put(curS, val + 1);
-            } else if (mapT.containsKey(curT)) {
-                int val = mapT.get(curT);
-                mapT.put(curT, val + 1);
-            } else {
-                mapS.put(curS, 1);
-                mapT.put(curT, 1);
-            }
-        }
-        for (int i = 0; i < s.length(); i++) {
-            if (!Objects.equals(mapS.get(s.charAt(i)), mapT.get(t.charAt(i)))) {
-                return false;
-            }
+            if (map1[s.charAt(i)] != map2[t.charAt(i)]) return false;
+            map1[s.charAt(i)] = i + 1;
+            map2[t.charAt(i)] = i + 1;
         }
         return true;
     }
@@ -116,11 +143,7 @@ public class Algo {
     // https://leetcode.com/problems/valid-palindrome/
     public static boolean isPalindrome(String s) {
         if (s.isEmpty()) return false;
-        String str = s.chars()
-                .filter(Character::isLetterOrDigit)
-                .mapToObj(x -> Character.toLowerCase((char) x))
-                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
-                .toString();
+        String str = s.chars().filter(Character::isLetterOrDigit).mapToObj(x -> Character.toLowerCase((char) x)).collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
         int l = 0;
         int r = str.length() - 1;
         while (l < r) {
@@ -202,11 +225,9 @@ public class Algo {
         for (int i = 0; i < nums.length; i++) {
             sumExpect += i + 1;
             sum += nums[i];
-            if (nums[i] == 0)
-                existNum_0 = true;
+            if (nums[i] == 0) existNum_0 = true;
         }
-        if (!existNum_0)
-            return 0;
+        if (!existNum_0) return 0;
         return sumExpect - sum;
     }
 
@@ -236,20 +257,17 @@ public class Algo {
     // https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
     public int strStr(String haystack, String needle) {
         char firstCharNeedle = needle.charAt(0);
-        if (haystack.length() < needle.length())
-            return -1;
+        if (haystack.length() < needle.length()) return -1;
         for (int i = 0; i < haystack.length(); i++) {
             int count = 0;
-            if (i + needle.length() > haystack.length())
-                return -1;
+            if (i + needle.length() > haystack.length()) return -1;
             if (haystack.charAt(i) == firstCharNeedle) {
                 for (int j = 1; j < needle.length(); j++) {
                     if (haystack.charAt(i + j) == needle.charAt(j)) {
                         count++;
                     }
                 }
-                if (count == needle.length() - 1)
-                    return i;
+                if (count == needle.length() - 1) return i;
             }
         }
         return -1;
@@ -274,8 +292,7 @@ public class Algo {
 
     // https://leetcode.com/problems/roman-to-integer/
     public int romanToInt(String s) {
-        if (s.length() < 1 || s.length() > 15)
-            return 0;
+        if (s.length() < 1 || s.length() > 15) return 0;
         int res = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == 'I') {
@@ -291,8 +308,7 @@ public class Algo {
                 }
                 res += 1;
             }
-            if (s.charAt(i) == 'V')
-                res += 5;
+            if (s.charAt(i) == 'V') res += 5;
             if (s.charAt(i) == 'X') {
                 if (i + 1 < s.length() && s.charAt(i + 1) == 'L') {
                     res += 40;
@@ -306,8 +322,7 @@ public class Algo {
                 }
                 res += 10;
             }
-            if (s.charAt(i) == 'L')
-                res += 50;
+            if (s.charAt(i) == 'L') res += 50;
             if (s.charAt(i) == 'C') {
                 if (i + 1 < s.length() && s.charAt(i + 1) == 'D') {
                     res += 400;
@@ -321,10 +336,8 @@ public class Algo {
                 }
                 res += 100;
             }
-            if (s.charAt(i) == 'D')
-                res += 500;
-            if (s.charAt(i) == 'M')
-                res += 1000;
+            if (s.charAt(i) == 'D') res += 500;
+            if (s.charAt(i) == 'M') res += 1000;
         }
         return res;
     }
