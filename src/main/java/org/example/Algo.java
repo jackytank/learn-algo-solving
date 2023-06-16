@@ -1,8 +1,6 @@
 package org.example;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Algo {
     public static void main(String[] args) {
@@ -12,8 +10,8 @@ public class Algo {
 
     // https://leetcode.com/problems/3sum/?envType=study-plan-v2&envId=top-interview-150
     public static List<List<Integer>> threeSum(int[] nums) {
-        var map = new HashMap<Integer, Integer>();
-        var hset = new HashSet<Integer>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        Set<List<Integer>> seenTriplet = new HashSet<>();
         List<List<Integer>> res = new ArrayList<>();
         if (nums.length == 3) {
             if (nums[0] + nums[1] + nums[2] == 0) {
@@ -24,13 +22,16 @@ public class Algo {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 int complement = 0 - nums[i] - nums[j];
-                if (hset.add(i) || hset.add(j) || hset.add(complement)) {
-                    if (map.containsKey(complement)) {
-                        var newList = List.of(nums[i], nums[j], complement);
-                        res.add(newList);
-                    } else {
-                        map.put(complement, i + j);
+                if (map.containsKey(complement)) {
+                    List<Integer> indices = map.get(complement);
+                    List<Integer> newIndices = Arrays.asList(i, j);
+                    indices.addAll(newIndices);
+                    var newTriplet = Arrays.asList(nums[i], nums[j], complement);
+                    if (seenTriplet.add(newTriplet)) {
+                        res.add(newTriplet);
                     }
+                } else {
+                    map.put(complement, Arrays.asList(i, j));
                 }
             }
         }
