@@ -15,10 +15,16 @@ public class Algo {
         var map = new HashMap<Integer, Integer>();
         var hset = new HashSet<Integer>();
         List<List<Integer>> res = new ArrayList<>();
+        if (nums.length == 3) {
+            if (nums[0] + nums[1] + nums[2] == 0) {
+                res.add(List.of(nums[0], nums[1], nums[2]));
+            }
+            return res;
+        }
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
-                if (hset.add(i + j)) {
-                    int complement = 0 - nums[i] - nums[j];
+                int complement = 0 - nums[i] - nums[j];
+                if (hset.add(i) || hset.add(j) || hset.add(complement)) {
                     if (map.containsKey(complement)) {
                         var newList = List.of(nums[i], nums[j], complement);
                         res.add(newList);
