@@ -5,24 +5,38 @@ import java.util.*;
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+//        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(threeSum(new int[]{0, 0, 0, 0}));
+    }
+
+    // https://leetcode.com/problems/container-with-most-water/?envType=study-plan-v2&envId=top-interview-150
+    public static int maxArea(int[] height) {
+        return 0;
     }
 
     // https://leetcode.com/problems/3sum/?envType=study-plan-v2&envId=top-interview-150
     public static List<List<Integer>> threeSum(int[] nums) {
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        Set<List<Integer>> seenTriplet = new HashSet<>();
+        int target = 0;
         List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                int complement = -nums[i] - nums[j];
-                if (map.containsKey(complement)) {
-                    var newTriplet = Arrays.asList(nums[i], nums[j], complement);
-                    if (seenTriplet.add(newTriplet)) {
-                        res.add(newTriplet);
+        Set<List<Integer>> seen = new HashSet<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; ++i) {
+            int l = i + 1;
+            int r = nums.length - 1;
+            while (l < r) {
+                int sum = nums[l] + nums[r] + nums[i];
+                if (sum == target) {
+                    var triplet = Arrays.asList(nums[i], nums[l], nums[r]);
+                    if (!seen.contains(triplet)) {
+                        res.add(triplet);
+                        seen.add(triplet);
                     }
+                    ++l;
+                    --r;
+                } else if (sum < 0) {
+                    ++l;
                 } else {
-                    map.put(complement, Arrays.asList(i, j));
+                    --r;
                 }
             }
         }
