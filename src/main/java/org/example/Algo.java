@@ -9,6 +9,13 @@ public class Algo {
         System.out.println(threeSum(new int[]{0, 0, 0, 0}));
     }
 
+    // https://leetcode.com/problems/longest-consecutive-sequence/
+    public static int longestConsecutive(int[] nums) {
+
+        return 0;
+    }
+
+    // Working...
     // https://leetcode.com/problems/container-with-most-water/?envType=study-plan-v2&envId=top-interview-150
     public static int maxArea(int[] height) {
         return 0;
