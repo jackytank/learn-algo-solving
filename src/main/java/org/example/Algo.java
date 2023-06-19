@@ -1,17 +1,24 @@
 package org.example;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Algo {
     public static void main(String[] args) {
         // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
 //        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
-        System.out.println(threeSum(new int[]{0, 0, 0, 0}));
+        System.out.println(longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
     }
 
     // https://leetcode.com/problems/longest-consecutive-sequence/
     public static int longestConsecutive(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Arrays.stream(nums).forEach(x -> map.put(x, 1));
+        for (int i = 1; i < nums.length; i++) {
+            if (map.containsKey(nums[i - 1])) {
 
+            }
+        }
         return 0;
     }
 
