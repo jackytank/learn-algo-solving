@@ -199,7 +199,7 @@ public class Algo {
 
     // https://leetcode.com/problems/longest-common-prefix/
     public static String longestCommonPrefix(String[] strs) {
-        if (strs.length == 0 || strs == null) {
+        if (strs.length == 0) {
             return "";
         }
         if (strs.length == 1) {
@@ -233,7 +233,7 @@ public class Algo {
         if (nums.length == 2 && nums[0] != nums[1]) {
             return false;
         }
-        Set<Integer> set = new HashSet<Integer>();
+        Set<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
             if (set.contains(nums[i])) {
                 return true;

@@ -1,0 +1,46 @@
+
+w
+java:S2293å"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÈúŒî8şÙ ÑŒ1
+v	java:S135Ë"YReduce the total number of break and continue statements in this loop to use at most one.(àÚ£é8„Ú ÑŒ1
+{	java:S135¼"YReduce the total number of break and continue statements in this loop to use at most one.(Úšïüÿÿÿÿ8…Ú ÑŒ1
+u	java:S127À"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8‰Ú ÑŒ1
+u	java:S127Å"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8‰Ú ÑŒ1
+u	java:S127Î"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ŒÚ ÑŒ1
+u	java:S127Ó"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ŒÚ ÑŒ1
+u	java:S127Ü"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ŒÚ ÑŒ1
+u	java:S127á"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8Ú ÑŒ1
+Q
+java:S1066_"/Merge this if statement with the enclosing one.(é™­ºøÿÿÿÿ8Ú ÑŒ1
+s	java:S117ó"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¬²¿úÿÿÿÿ8“Ú ÑŒ1
+n	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–“öí8”Ú ÑŒ1
+V
+java:S2589Ã"8Remove this expression which always evaluates to "false"(í¿Æ¶8Ä”¾ÑŒ1
+m
+java:S1149Y"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Ì×Ó¤8Ë”¾ÑŒ1
+s
+java:S1149©"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÑÖÙƒıÿÿÿÿ8Ì”¾ÑŒ1
+U	java:S106	"9Replace this use of System.out or System.err by a logger.(¶›æª8¿ä ÑŒ1
+]	java:S125"<This block of commented-out lines of code should be removed.(Â­ÉÇÿÿÿÿÿ8ÓŠ°ÒŒ1
+V
+java:S3400"9Remove this method and declare a constant for this value.(”·³›8šÏ¿ÒŒ1
+M
+java:S1172"+Remove this unused method parameter "nums".(ôîù˜ıÿÿÿÿ8ô¸ËÓŒ1
+V
+java:S3400"9Remove this method and declare a constant for this value.(”·³›8õ¸ËÓŒ1
+O
+java:S1172"-Remove this unused method parameter "height".(ˆĞÏùÿÿÿÿ8›Ï¿ÒŒ1
+u
+java:S3776•"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ï„Ïšşÿÿÿÿ8â•¾ÑŒ1
+\
+java:S1155¬">Use isEmpty() to check whether the collection is empty or not.(´Ø°8é•¾ÑŒ1
+E
+java:S1905­"'Remove this unnecessary cast to "char".(¦¿™È8é•¾ÑŒ1
+o
+java:S3776¹"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(Šµ²
+8ë•¾ÑŒ1
+E
+java:S1125ú"'Remove the unnecessary boolean literal.(ÛÌÛ‡8ù•¾ÑŒ1
+E
+java:S1125ı"'Remove the unnecessary boolean literal.(µ¶ Ù8ú•¾ÑŒ1
+D
+java:S1168¥"&Return an empty array instead of null.(¥¹ï8–¾ÑŒ1
