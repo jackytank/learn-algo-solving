@@ -12,9 +12,9 @@
     "pretty": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "outDir": "dist"
   },
-  "include": ["*"],
   "exclude": [
     "node_modules"
   ]
