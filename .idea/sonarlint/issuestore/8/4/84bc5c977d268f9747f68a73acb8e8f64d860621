@@ -1,0 +1,37 @@
+
+v	java:S135“"YReduce the total number of break and continue statements in this loop to use at most one.(‡⁄£È8˝–·Õç1
+{	java:S135√"YReduce the total number of break and continue statements in this loop to use at most one.(é⁄öÔ¸ˇˇˇˇ8˛–·Õç1
+u	java:S127«"XRefactor the code in order to not assign to this loop counter from within the loop body.(ÃÇàÃ8ˇ–·Õç1
+u	java:S127Ã"XRefactor the code in order to not assign to this loop counter from within the loop body.(ÃÇàÃ8ˇ–·Õç1
+u	java:S127’"XRefactor the code in order to not assign to this loop counter from within the loop body.(ÃÇàÃ8ˇ–·Õç1
+u	java:S127⁄"XRefactor the code in order to not assign to this loop counter from within the loop body.(ÃÇàÃ8ˇ–·Õç1
+u	java:S127„"XRefactor the code in order to not assign to this loop counter from within the loop body.(ÃÇàÃ8ˇ–·Õç1
+u	java:S127Ë"XRefactor the code in order to not assign to this loop counter from within the loop body.(ÃÇàÃ8ˇ–·Õç1
+Q
+java:S1066f"/Merge this if statement with the enclosing one.(Èô≠∫¯ˇˇˇˇ8Ä—·Õç1
+s	java:S117˙"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ô¨≤ø˙ˇˇˇˇ8Å—·Õç1
+n	java:S117ï"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñìˆÌ8Ç—·Õç1
+m
+java:S1149`"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Ã◊”§8¢Â·Õç1
+s
+java:S1149∞"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(—÷ŸÉ˝ˇˇˇˇ8£Â·Õç1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(¢Æ≈“˝ˇˇˇˇ8¶Â·Õç1
+V
+java:S3400"9Remove this method and declare a constant for this value.(î∑≥õ8≠Â·Õç1
+O
+java:S1172"-Remove this unused method parameter "height".(à–œè˘ˇˇˇˇ8ØÂ·Õç1
+u
+java:S3776ú"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(œÑœö˛ˇˇˇˇ8‡Â·Õç1
+\
+java:S1155≥">Use isEmpty() to check whether the collection is empty or not.(¥êÿ∞8ãÊ·Õç1
+E
+java:S1905¥"'Remove this unnecessary cast to "char".(¶øô»8åÊ·Õç1
+o
+java:S3776¿"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(äµ≤
+8çÊ·Õç1
+E
+java:S1125Å"'Remove the unnecessary boolean literal.(€Ã€á8ùÊ·Õç1
+E
+java:S1125Ñ"'Remove the unnecessary boolean literal.(µ∂†Ÿ8ûÊ·Õç1
+D
+java:S1168¨"&Return an empty array instead of null.(•πÔç8®Ê·Õç1

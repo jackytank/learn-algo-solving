@@ -1,25 +1,26 @@
 package org.example;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class Algo {
     public static void main(String[] args) {
-        // Arrays.stream(plusOne(new int[]{9, 9, 9, 9, 9, 9})).forEach(n ->
-//        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
-        System.out.println(longestConsecutive(new int[]{100, 4, 200, 1, 3, 2}));
+        System.out.println(longestConsecutive(new int[] { 100, 4, 200, 1, 3, 2 }));
     }
 
     // https://leetcode.com/problems/longest-consecutive-sequence/
     public static int longestConsecutive(int[] nums) {
+        int max = 0;
         Map<Integer, Integer> map = new HashMap<>();
-        Arrays.stream(nums).forEach(x -> map.put(x, 1));
-        for (int i = 1; i < nums.length; i++) {
-            if (map.containsKey(nums[i - 1])) {
-
-            }
+        Arrays.stream(nums).forEach(num -> map.put(num, 1));
+        for (int num : nums) {
+            int next = num + 1;
+            int count = 0;
+            if (map.containsKey(next))
+                continue;
+            while (map.containsKey(num - ++count));
+            max = Math.max(max, count);
         }
-        return 0;
+        return max;
     }
 
     // Working...
@@ -83,7 +84,8 @@ public class Algo {
         var map1 = new int[127];
         var map2 = new int[127];
         for (int i = 0; i < s.length(); i++) {
-            if (map1[s.charAt(i)] != map2[t.charAt(i)]) return false;
+            if (map1[s.charAt(i)] != map2[t.charAt(i)])
+                return false;
             map1[s.charAt(i)] = i + 1;
             map2[t.charAt(i)] = i + 1;
         }
@@ -92,7 +94,8 @@ public class Algo {
 
     // https://leetcode.com/problems/is-subsequence/?envType=study-plan-v2&envId=top-interview-150
     public static boolean isSubsequence(String s, String t) {
-        if (s.isEmpty()) return true;
+        if (s.isEmpty())
+            return true;
         var stack = new Stack<Character>();
         for (int i = s.length() - 1; i >= 0; i--) {
             stack.push(s.charAt(i));
@@ -109,14 +112,16 @@ public class Algo {
 
     // https://leetcode.com/problems/majority-element/?envType=study-plan-v2&envId=top-interview-150
     public static int majorityElement(int[] nums) {
-        if (nums.length == 1) return nums[0];
+        if (nums.length == 1)
+            return nums[0];
         Map<Integer, Integer> map = new HashMap<>();
         int minTime = nums.length / 2;
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
                 int val = map.get(nums[i]);
                 map.put(nums[i], val + 1);
-                if (val + 1 > minTime) return nums[i];
+                if (val + 1 > minTime)
+                    return nums[i];
             } else {
                 map.put(nums[i], 1);
             }
@@ -152,7 +157,8 @@ public class Algo {
 
     // https://leetcode.com/problems/longest-palindrome/
     public static int longestPalindrome(String s) {
-        if (s.length() == 2 && (s.charAt(0) == s.charAt(1))) return 2;
+        if (s.length() == 2 && (s.charAt(0) == s.charAt(1)))
+            return 2;
         Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             if (map.containsKey(s.charAt(i))) {
@@ -162,14 +168,17 @@ public class Algo {
             }
         }
         int res = s.length() - map.size();
-        if (s.length() == res) return res;
+        if (s.length() == res)
+            return res;
         return res % 2 == 0 ? res + 1 : res;
     }
 
     // https://leetcode.com/problems/valid-palindrome/
     public static boolean isPalindrome(String s) {
-        if (s.isEmpty()) return false;
-        String str = s.chars().filter(Character::isLetterOrDigit).mapToObj(x -> Character.toLowerCase((char) x)).collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
+        if (s.isEmpty())
+            return false;
+        String str = s.chars().filter(Character::isLetterOrDigit).mapToObj(x -> Character.toLowerCase((char) x))
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
         int l = 0;
         int r = str.length() - 1;
         while (l < r) {
@@ -251,9 +260,11 @@ public class Algo {
         for (int i = 0; i < nums.length; i++) {
             sumExpect += i + 1;
             sum += nums[i];
-            if (nums[i] == 0) existNum_0 = true;
+            if (nums[i] == 0)
+                existNum_0 = true;
         }
-        if (!existNum_0) return 0;
+        if (!existNum_0)
+            return 0;
         return sumExpect - sum;
     }
 
@@ -283,17 +294,20 @@ public class Algo {
     // https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
     public int strStr(String haystack, String needle) {
         char firstCharNeedle = needle.charAt(0);
-        if (haystack.length() < needle.length()) return -1;
+        if (haystack.length() < needle.length())
+            return -1;
         for (int i = 0; i < haystack.length(); i++) {
             int count = 0;
-            if (i + needle.length() > haystack.length()) return -1;
+            if (i + needle.length() > haystack.length())
+                return -1;
             if (haystack.charAt(i) == firstCharNeedle) {
                 for (int j = 1; j < needle.length(); j++) {
                     if (haystack.charAt(i + j) == needle.charAt(j)) {
                         count++;
                     }
                 }
-                if (count == needle.length() - 1) return i;
+                if (count == needle.length() - 1)
+                    return i;
             }
         }
         return -1;
@@ -318,52 +332,39 @@ public class Algo {
 
     // https://leetcode.com/problems/roman-to-integer/
     public int romanToInt(String s) {
-        if (s.length() < 1 || s.length() > 15) return 0;
         int res = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'I') {
-                if (i + 1 < s.length() && s.charAt(i + 1) == 'V') {
-                    res += 4;
-                    i++;
-                    continue;
-                }
-                if (i + 1 < s.length() && s.charAt(i + 1) == 'X') {
-                    res += 9;
-                    i++;
-                    continue;
-                }
-                res += 1;
+        int prev = 0;
+        int num = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            switch (s.charAt(i)) {
+                case 'I':
+                    num = 1;
+                    break;
+                case 'V':
+                    num = 5;
+                    break;
+                case 'X':
+                    num = 10;
+                    break;
+                case 'L':
+                    num = 50;
+                    break;
+                case 'C':
+                    num = 100;
+                    break;
+                case 'D':
+                    num = 500;
+                    break;
+                case 'M':
+                    num = 1000;
+                    break;
             }
-            if (s.charAt(i) == 'V') res += 5;
-            if (s.charAt(i) == 'X') {
-                if (i + 1 < s.length() && s.charAt(i + 1) == 'L') {
-                    res += 40;
-                    i++;
-                    continue;
-                }
-                if (i + 1 < s.length() && s.charAt(i + 1) == 'C') {
-                    res += 90;
-                    i++;
-                    continue;
-                }
-                res += 10;
+            if(num < prev){
+                res -= num;
+            }else{
+                res += num;
             }
-            if (s.charAt(i) == 'L') res += 50;
-            if (s.charAt(i) == 'C') {
-                if (i + 1 < s.length() && s.charAt(i + 1) == 'D') {
-                    res += 400;
-                    i++;
-                    continue;
-                }
-                if (i + 1 < s.length() && s.charAt(i + 1) == 'M') {
-                    res += 900;
-                    i++;
-                    continue;
-                }
-                res += 100;
-            }
-            if (s.charAt(i) == 'D') res += 500;
-            if (s.charAt(i) == 'M') res += 1000;
+            prev = num;
         }
         return res;
     }
@@ -421,7 +422,7 @@ public class Algo {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(target - nums[i])) {
-                return new int[]{map.get(target - nums[i]), i};
+                return new int[] { map.get(target - nums[i]), i };
             }
             map.put(nums[i], i);
         }
