@@ -1,37 +1,38 @@
 
-v	java:S135Ò"YReduce the total number of break and continue statements in this loop to use at most one.(àÚ£é8ıĞáÍ1
-{	java:S135Ã"YReduce the total number of break and continue statements in this loop to use at most one.(Úšïüÿÿÿÿ8şĞáÍ1
-u	java:S127Ç"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÿĞáÍ1
-u	java:S127Ì"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÿĞáÍ1
-u	java:S127Õ"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÿĞáÍ1
-u	java:S127Ú"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÿĞáÍ1
-u	java:S127ã"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÿĞáÍ1
-u	java:S127è"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8ÿĞáÍ1
+v	java:S135ä"YReduce the total number of break and continue statements in this loop to use at most one.(àÚ£é8ıĞáÍ1
 Q
-java:S1066f"/Merge this if statement with the enclosing one.(é™­ºøÿÿÿÿ8€ÑáÍ1
-s	java:S117ú"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¬²¿úÿÿÿÿ8ÑáÍ1
-n	java:S117•"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–“öí8‚ÑáÍ1
+java:S1066r"/Merge this if statement with the enclosing one.(é™­ºøÿÿÿÿ8€ÑáÍ1
+s	java:S117Œ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¬²¿úÿÿÿÿ8ÑáÍ1
+n	java:S117Ÿ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–“öí8‚ÑáÍ1
 m
-java:S1149`"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Ì×Ó¤8¢åáÍ1
+java:S1149l"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(Ì×Ó¤8¢åáÍ1
 s
-java:S1149°"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÑÖÙƒıÿÿÿÿ8£åáÍ1
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(¢®ÅÒıÿÿÿÿ8¦åáÍ1
+java:S1149Ç"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(ÑÖÙƒıÿÿÿÿ8£åáÍ1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(áûÒ¬ÿÿÿÿÿ8ÉÛª‘1
+T	java:S106"9Replace this use of System.out or System.err by a logger.(šº°N8ÊÛª‘1
+T	java:S106	"9Replace this use of System.out or System.err by a logger.(²Œü8ËÛª‘1
+U	java:S106
+"9Replace this use of System.out or System.err by a logger.(¹âĞö8ÌÛª‘1
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Ãîî’8ÍÛª‘1
+U	java:S106"9Replace this use of System.out or System.err by a logger.(â‚³‰8ÍÛª‘1
+T	java:S106"9Replace this use of System.out or System.err by a logger.(ãïüb8ÎÛª‘1
+T	java:S106"9Replace this use of System.out or System.err by a logger.(ùëè8ÏÛª‘1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(å¬×²ùÿÿÿÿ8ĞÛª‘1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ÌÈÀıÿÿÿÿ8ÑÛª‘1
 V
-java:S3400"9Remove this method and declare a constant for this value.(”·³›8­åáÍ1
+java:S3400&"9Remove this method and declare a constant for this value.(”·³›8­åáÍ1
 O
-java:S1172"-Remove this unused method parameter "height".(ˆĞÏùÿÿÿÿ8¯åáÍ1
+java:S1172%"-Remove this unused method parameter "height".(ˆĞÏùÿÿÿÿ8¯åáÍ1
 u
-java:S3776œ"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ï„Ïšşÿÿÿÿ8àåáÍ1
+java:S3776°"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(Ï„Ïšşÿÿÿÿ8àåáÍ1
 \
-java:S1155³">Use isEmpty() to check whether the collection is empty or not.(´Ø°8‹æáÍ1
+java:S1155Ê">Use isEmpty() to check whether the collection is empty or not.(´Ø°8‹æáÍ1
 E
-java:S1905´"'Remove this unnecessary cast to "char".(¦¿™È8ŒæáÍ1
-o
-java:S3776À"RRefactor this method to reduce its Cognitive Complexity from 41 to the 15 allowed.(Šµ²
-8æáÍ1
+java:S1905Ë"'Remove this unnecessary cast to "char".(¦¿™È8ŒæáÍ1
+?	java:S131Ü""Add a default case to this switch.(•Ï8¹Êş‘1
 E
-java:S1125"'Remove the unnecessary boolean literal.(ÛÌÛ‡8æáÍ1
+java:S1125‹"'Remove the unnecessary boolean literal.(ÛÌÛ‡8æáÍ1
 E
-java:S1125„"'Remove the unnecessary boolean literal.(µ¶ Ù8æáÍ1
+java:S1125"'Remove the unnecessary boolean literal.(µ¶ Ù8æáÍ1
 D
-java:S1168¬"&Return an empty array instead of null.(¥¹ï8¨æáÍ1
+java:S1168¶"&Return an empty array instead of null.(¥¹ï8¨æáÍ1

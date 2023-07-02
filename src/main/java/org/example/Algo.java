@@ -4,7 +4,16 @@ import java.util.*;
 
 public class Algo {
     public static void main(String[] args) {
-        System.out.println(longestConsecutive(new int[] { 100, 4, 200, 1, 3, 2 }));
+        System.out.println(isPalindrome("A man, a plan, a canal: Panama")); // true
+        System.out.println(isPalindrome("race a car")); // false
+        System.out.println(isPalindrome("")); // false
+        System.out.println(isPalindrome(" ")); // true
+        System.out.println(isPalindrome("A")); // true
+        System.out.println(isPalindrome("Aa")); // true
+        System.out.println(isPalindrome("Aba")); // true
+        System.out.println(isPalindrome("Abba")); // true
+        System.out.println(isPalindrome("Madam")); // true
+        System.out.println(isPalindrome("Was it a car or a cat I saw?")); // true
     }
 
     // https://leetcode.com/problems/longest-consecutive-sequence/

@@ -16,7 +16,90 @@ import static java.util.stream.Collectors.groupingBy;
 
 public class Learning {
     public static void main(String[] args) {
-        StreamAPI.learn();
+        DynamicArray array = new DynamicArray();
+        array.add(1);
+        array.add(2);
+        array.add(3);
+        array.add(4);
+        System.out.println(array.toString());
+    }
+}
+
+class DynamicArray {
+    int size;
+    int capacity = 10;
+    Object[] array;
+
+    public DynamicArray() {
+        this.array = new Object[capacity];
+    }
+
+    public DynamicArray(int capacity) {
+        this.capacity = capacity;
+        this.array = new Object[capacity];
+    }
+
+    public void add(Object data) {
+        if (size >= capacity) {
+            grow();
+        }
+        array[size++] = data;
+    }
+
+    public void insert(int index, Object data) {
+
+    }
+
+    public void delete(Object data) {
+
+    }
+
+    public int search(Object data) {
+        return -1;
+    }
+
+    private void grow() {
+
+    }
+
+    private void shrink() {
+
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public String toString() {
+        String string = "";
+        for (int i = 0; i < size; i++) {
+            string += array[i] + ", ";
+        }
+        if (string != "") {
+            string = string.substring(0, string.length() - 2);
+        }
+        return string;
+    }
+
+
+}
+
+class LearnCollections {
+    public static boolean isPalinedrome(String s) {
+        // Convert the string to lowercase and remove all non-alphanumeric characters
+        s = s.toLowerCase().replaceAll("[^a-z0-9]", "");
+        LinkedList<Character> queue = new LinkedList<>();
+        for (int i = 0; i < s.length(); i++) {
+            queue.offer(s.charAt(i));
+        }
+        while (queue.size() > 1) {
+            char first = queue.poll();
+            char last = queue.pollLast();
+            if (first != last) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
@@ -63,8 +146,5 @@ class StreamAPI {
                 .get()
                 .getKey();
         System.out.println(res8);
-
-
-
     }
 }
